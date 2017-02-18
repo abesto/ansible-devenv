@@ -1,5 +1,7 @@
 - hosts: localhost
   roles:
+    - unix_utils
+    - monitoring
     - bashrc
     - fish
     - tmux

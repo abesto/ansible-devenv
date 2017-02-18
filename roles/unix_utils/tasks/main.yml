@@ -1,0 +1,11 @@
+- name: Install common tools
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - silversearcher-ag
+    - unzip
+    - wget
+    - curl
+    - jq

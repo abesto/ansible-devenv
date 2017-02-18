@@ -1,0 +1,10 @@
+- name: Install diagnostic tools
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - htop
+    - atop
+    - iotop
+    - nethogs
