@@ -1,0 +1,4 @@
+- name: Install RVM
+  shell: curl -sSL https://get.rvm.io | bash
+  args:
+    creates: ~/.rvm/bin/rvm

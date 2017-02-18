@@ -2,3 +2,4 @@
   shell: fisher install {{ src | default(name) }}
   args:
     executable: /usr/bin/fish 
+    creates: ~/.config/fisherman/{{ name }}

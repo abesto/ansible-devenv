@@ -1,0 +1,17 @@
+- name: Create temp dir
+  command: mktemp -d
+  register: tmp
+
+- name: Extract peco
+  unarchive:
+    src: ~/.ansible/peco.tar.gz
+    dest: "{{ tmp.stdout }}"
+    remote_src: true
+  
+- name: Copy peco into /usr/local/bin
+  become: true
+  copy:
+    src: "{{ tmp.stdout }}/peco_linux_amd64/peco"
+    dest: /usr/local/bin
+    remote_src: true
+    mode: 0755
