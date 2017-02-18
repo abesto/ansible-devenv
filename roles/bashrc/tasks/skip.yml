@@ -1,0 +1,9 @@
+- name: Create ~/.bashrc-{{ flavor }}.skip
+  file:
+    path: ~/.bashrc-{{ flavor }}.skip
+    state: directory
+
+- name: Touch ~/.bashrc-{{ flavor }}.skip/{{ priority }}-{{name}}
+  file:
+    path: ~/.bashrc-{{ flavor }}.skip/{{ priority }}-{{name}}
+    state: touch

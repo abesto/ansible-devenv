@@ -1,0 +1,4 @@
+- name: Register {{ name }} as .bashrc.d script with priority {{ priority }}
+  copy:
+    src: "{{ src }}"
+    dest: ~/.bashrc.d/{{ priority }}-{{name}}

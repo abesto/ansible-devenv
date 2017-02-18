@@ -1,0 +1,4 @@
+- name: Install fisher package {{ name }} (src={{ src | default(name) }})
+  shell: fisher install {{ src | default(name) }}
+  args:
+    executable: /usr/bin/fish 

@@ -1,0 +1,34 @@
+- name: Install fish shell and friends
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - curl
+    - fish
+    - fortune-mod
+    - most
+
+- name: Install fisher
+  command: curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+  args:
+    creates: ~/.config/fish/functions/fisher.fish
+
+- name: Install fisher modules
+  include: tasks/fisher_package.yml name={{ item }}
+  with_items:
+    - z
+    - rvm
+    - metro
+
+- name: Install fish customizations
+  include: tasks/fisher_package.yml name=abesto src=~/.dotfiles.ansible/fish-abesto 
+
+- name: As last step of bash startup, exec fish
+  include: roles/bashrc/tasks/bashrc.yml name=exec-fish.sh src=files/exec-fish.sh priority=99
+
+- name: Create nofish bash flavor
+  include: roles/bashrc/tasks/flavor.yml name=nofish
+
+- name: Skip execing fish in the nofish bash flavor
+  include: roles/bashrc/tasks/skip.yml flavor=nofish priority=99 name=exec-fish.sh

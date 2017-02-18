@@ -1,0 +1,7 @@
+- name: ~/.bashrc.d
+  file:
+    path: ~/.bashrc.d
+    state: directory
+
+- name: ~/.bashrc
+  include: roles/dotfiles/tasks/symlink.yml src=.bashrc force=true
