@@ -1,15 +1,16 @@
 - hosts: localhost
   roles:
     - unix_utils
+    - git
     - monitoring
     - bashrc
     - fish
     - keychain
     - tmux
+    - urxvt
     - emacs
-    - git
     - ruby
     - lightdm
     - xmonad
     - chrome
-    - urxvt
+    - spotify
