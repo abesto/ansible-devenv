@@ -1,0 +1,23 @@
+- name: Install tmux
+  become: true
+  apt:
+    name: tmux
+    state: latest
+
+- name: Create ~/.tmux/plugins
+  file:
+    path: ~/.tmux.plugins
+    state: directory
+    recurse: true
+
+- name: Install tpm (tmux package manager)
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+    update: no
+
+- name: Symlink .tmux.conf
+  include: roles/dotfiles/tasks/symlink.yml src=.tmux.conf
+
+- name: Install tmux plugins
+  shell: TMUX_PLUGIN_MANAGER_PATH=~/.tmux/plugins ~/.tmux/plugins/tpm/bin/install_plugins

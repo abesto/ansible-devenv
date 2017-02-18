@@ -2,7 +2,8 @@
   roles:
     - bashrc
     - fish
-    - emacs 
+    - tmux
+    - emacs
     - git
     - ruby
     - lightdm
