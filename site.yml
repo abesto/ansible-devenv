@@ -4,6 +4,7 @@
     - monitoring
     - bashrc
     - fish
+    - keychain
     - tmux
     - emacs
     - git

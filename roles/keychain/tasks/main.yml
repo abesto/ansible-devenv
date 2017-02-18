@@ -1,0 +1,8 @@
+- name: Install keychain
+  become: true
+  apt:
+    name: keychain
+    state: latest
+
+- name: Initialize keychain on bash startup
+  include: roles/bashrc/tasks/bashrc.yml name=keychain src=files/keychain.sh priority=10
