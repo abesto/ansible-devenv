@@ -3,3 +3,12 @@
   apt:
     name: emacs
     state: latest
+
+- name: Symlink .spacemacs
+  include: roles/dotfiles/tasks/symlink.yml src=.spacemacs
+
+- name: Install Spacemacs
+  git:
+    repo: https://github.com/syl20bnr/spacemacs
+    dest: ~/.emacs.d
+    update: no
