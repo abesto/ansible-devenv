@@ -1,0 +1,5 @@
+- name: Symlink {{ src }} from dotfiles repository
+  file:
+    src: "/home/abesto/.dotfiles.ansible/{{ src }}"
+    dest: /home/abesto/{{ src }}
+    state: link

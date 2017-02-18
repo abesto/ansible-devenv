@@ -1,0 +1,5 @@
+- name: Install LightDM
+  become: true
+  apt:
+    name: lightdm
+    state: latest

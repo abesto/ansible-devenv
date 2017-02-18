@@ -1,0 +1,7 @@
+- hosts: localhost
+  roles:
+    - emacs 
+    - git
+    - lightdm
+    - xmonad
+    - chrome

@@ -1,0 +1,6 @@
+- name: Clone dotfiles repo
+  git:
+    repo: https://github.com/abesto/dotfiles
+    dest: /home/abesto/.dotfiles.ansible
+
+- include: symlink.yml src=bin

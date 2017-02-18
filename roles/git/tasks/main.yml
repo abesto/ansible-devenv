@@ -1,0 +1,2 @@
+- name: Symlink git configuration
+  include: roles/dotfiles/tasks/symlink.yml src=.gitconfig

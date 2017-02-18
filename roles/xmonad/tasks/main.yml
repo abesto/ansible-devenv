@@ -1,0 +1,26 @@
+- name: Install XMonad and friends
+  become: true
+  apt: name={{ item }} state=latest
+  with_items:
+    - xmonad
+    - libghc-xmonad-contrib-dev
+    - dmenu
+    - xmobar
+
+- name: Set XMonad as default LightDM session
+  become: true
+  copy:
+    src: files/50-xmonad.conf
+    dest: /etc/lightdm/lightdm.conf.d/50-xmonad.conf
+  notify:
+    - restart lightdm
+
+- file:
+    path: ~/.config/xmobar
+    state: directory 
+
+- name: Symlink XMonad configuration
+  include: roles/dotfiles/tasks/symlink.yml src={{ item }}
+  with_items:
+    - .xmonad
+    - .config/xmobar/xmobarrc
