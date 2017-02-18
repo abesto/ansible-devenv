@@ -1,0 +1,5 @@
+- name: Symlink .XResources and .XResources.d
+  include: roles/dotfiles/tasks/symlink.yml src={{ item }}
+  with_items:
+    - .Xresources
+    - .Xresources.d

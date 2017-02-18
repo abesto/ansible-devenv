@@ -2,5 +2,6 @@
   git:
     repo: https://github.com/abesto/dotfiles
     dest: /home/abesto/.dotfiles.ansible
+    force: true
 
 - include: symlink.yml src=bin

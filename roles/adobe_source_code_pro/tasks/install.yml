@@ -1,0 +1,32 @@
+- name: Create ~/.local/share/fonts/adobe-source-code-pro
+  file:
+    dest: ~/.local/share/fonts/adobe-source-code-pro
+    state: directory
+    recurse: true
+
+- name: Create temp dir
+  command: mktemp -d
+  register: tmp
+
+- name: Extract Adobe Source Code Pro
+  unarchive:
+    src: ~/.ansible/adobe-source-code-pro.tar.gz
+    dest: "{{ tmp.stdout }}"
+    remote_src: true
+  
+- name: Find OTF font files of Adobe Source Code Pro
+  find:
+    paths: "{{ tmp.stdout }}"
+    patterns: "*.otf"
+    recurse: true
+  register: fontfiles
+
+- name: Copy OTF font files of Adobe Source Code Pro
+  copy:
+    src: "{{ item.path }}"
+    dest: ~/.local/share/fonts/adobe-source-code-pro
+    remote_src: true
+  with_items: "{{ fontfiles.files }}"
+
+- name: Refresh font cache
+  command: fc-cache -f -v

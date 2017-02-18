@@ -1,0 +1,2 @@
+- name: Install Adobe Source Code Pro
+  include: tasks/install.yml
