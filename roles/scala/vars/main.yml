@@ -1,0 +1,4 @@
+scala:
+  scalastyle:
+    version: 0.8.0
+    checksum: sha1:66ce54a6eb8dde221c6efb530b2c108c876c0e27

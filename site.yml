@@ -1,16 +1,25 @@
 - hosts: localhost
   roles:
+    # Basics
     - unix_utils
     - git
     - monitoring
+    # Terminal env
     - bashrc
     - fish
     - keychain
     - tmux
-    - urxvt
-    - emacs
-    - ruby
-    - lightdm
+    # GUI env
     - xmonad
+    - urxvt
+    - lightdm
+    # IDE
+    - vim
+    - emacs
+    # Languages
+    - ruby
+    - java
+    - scala
+    # User apps
     - chrome
     - spotify
