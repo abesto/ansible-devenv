@@ -15,6 +15,7 @@
     - xmonad
     - urxvt
     - lightdm
+    - slack
     # IDE
     - vim
     - emacs

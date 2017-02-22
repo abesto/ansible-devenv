@@ -1,0 +1,17 @@
+- name: Check is Slack is installed and up to date
+  shell: 'apt-cache policy slack-desktop | grep "Installed: {{ slack.version }}"'
+  register: slack_installed
+  ignore_errors: yes
+
+- when: slack_installed.rc != 0
+  block:
+    - name: Download Slack {{ slack.version }}
+      get_url:
+        url: https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack.version }}-amd64.deb
+        dest: /tmp/slack.deb
+    - name: Install Slack {{ slack.version }}
+      become: true
+      shell: |
+        dpkg -i /tmp/slack.deb
+        apt-get --yes --fix-broken install
+        rm /tmp/slack.deb
