@@ -6,6 +6,19 @@
     - libghc-xmonad-contrib-dev
     - dmenu
     - xmobar
+    - stalonetray
+    - scrot
+    - cabal-install
+    - gpicview
+
+- name: Install yeganesh with cabal
+  shell: cabal update; cabal install yeganesh
+  args:
+    creates: ~/.cabal/bin/yeganesh
+
+# If this repo ever decides to include a Haskell devenv, this should move there
+- name: Add cabal bin dir to path
+  include: roles/bashrc/tasks/bashrc.yml name=cabal-bin-path src=files/cabal-bin-path.sh priority=20
 
 - name: Set XMonad as default LightDM session
   become: true
@@ -17,7 +30,7 @@
 
 - file:
     path: ~/.config/xmobar
-    state: directory 
+    state: directory
 
 - name: Symlink XMonad configuration
   include: roles/dotfiles/tasks/symlink.yml src={{ item }}
