@@ -1,9 +1,8 @@
-- name: Download IntelliJ IDEA Ultimate {{ intellij.idea.version }}
-  get_url:
-    url: https://download.jetbrains.com/idea/ideaIU-{{ intellij.idea.version }}.tar.gz
-    checksum: "{{ intellij.idea.checksum }}"
-    dest: ~/.ansible/idea.tar.gz
-  register: idea_download
+- name: Check if IntelliJ IDEA Ultimate {{ intellij.idea.version }} is installed
+  command: cat ~/.idea-version
+  ignore_errors: true
+  register: check_intellij
 
 - name: Install IntelliJ IDEA Ultimate {{ intellij.idea.version }}
+  when: check_intellij.stdout != intellij.idea.version
   include: install.yml
