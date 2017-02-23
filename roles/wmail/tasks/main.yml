@@ -11,10 +11,8 @@
         dest: /tmp/wmail.deb
     - name: Install WMail {{ wmail.version }}
       become: true
-      shell: |
-        dpkg -i /tmp/wmail.deb
-        apt-get --yes --fix-broken install
-        rm /tmp/wmail.deb
+      apt:
+        deb: /tmp/wmail.deb
 
 - name: Symlink WMail
   become: true
