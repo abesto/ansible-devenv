@@ -40,3 +40,6 @@
 
 - name: Start stalonetray from .xprofile
   include: roles/xprofile/tasks/xprofile.yml name=stalonetray src=stalonetray priority=20
+
+- name: Set keyboard repeat rate
+  include: roles/xprofile/tasks/xprofile.yml name=keyboard-repeat src=keyboard-repeat priority=20
