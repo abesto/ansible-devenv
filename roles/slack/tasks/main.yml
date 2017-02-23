@@ -11,7 +11,5 @@
         dest: /tmp/slack.deb
     - name: Install Slack {{ slack.version }}
       become: true
-      shell: |
-        dpkg -i /tmp/slack.deb
-        apt-get --yes --fix-broken install
-        rm /tmp/slack.deb
+      apt:
+        deb: /tmp/slack.deb

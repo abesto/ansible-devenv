@@ -37,3 +37,6 @@
   with_items:
     - .xmonad
     - .config/xmobar/xmobarrc
+
+- name: Start stalonetray from .xprofile
+  include: roles/xprofile/tasks/xprofile.yml name=stalonetray src=stalonetray priority=20

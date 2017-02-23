@@ -1,0 +1,16 @@
+- name: Install volume control
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - pasystray
+    - paman
+    - paprefs
+    - pavucontrol
+    - pavumeter
+    - pulseaudio-module-zeroconf
+    - pnmixer
+
+- name: Start volume control (paman) in xprofile
+  include: roles/xprofile/tasks/xprofile.yml name=pnmixer src=pnmixer priority=20

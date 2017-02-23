@@ -6,6 +6,7 @@
     - unix_utils
     - git
     - monitoring
+    - audio
     # Terminal env
     - bashrc
     - fish

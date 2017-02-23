@@ -1,0 +1,4 @@
+- name: Register {{ name }} as .xprofile.d script with priority {{ priority }}
+  copy:
+    src: "{{ src }}"
+    dest: ~/.xprofile.d/{{ priority }}-{{name}}

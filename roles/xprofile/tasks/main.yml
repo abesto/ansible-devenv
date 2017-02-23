@@ -1,0 +1,7 @@
+- name: ~/.xprofile.d
+  file:
+    path: ~/.xprofile.d
+    state: directory
+
+- name: ~/.xprofile
+  include: roles/dotfiles/tasks/symlink.yml src=.xprofile force=true
