@@ -1,0 +1,7 @@
+- name: Create ~/.ssh
+  file:
+    path: ~/.ssh
+    state: directory
+
+- name: Symlink SSH config
+  include: roles/dotfiles/tasks/symlink.yml src=.ssh/config

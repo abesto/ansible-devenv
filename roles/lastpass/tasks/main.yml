@@ -1,0 +1,5 @@
+- name: Install LastPass CLI
+  become: true
+  apt:
+    name: lastpass-cli
+    state: latest

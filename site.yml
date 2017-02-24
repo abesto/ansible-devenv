@@ -3,6 +3,7 @@
     - "!all"
   roles:
     # Basics
+    - ssh_keys
     - unix_utils
     - git
     - monitoring
@@ -13,6 +14,7 @@
     - fish
     - keychain
     - tmux
+    - ssh
     # GUI env
     - xmonad
     - urxvt

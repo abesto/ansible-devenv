@@ -1,0 +1,16 @@
+- name: Create ~/.ssh
+  file:
+    path: ~/.ssh
+    state: directory
+
+- name: SSH Private key
+  copy:
+    content: "{{ lookup('lastpass', 'SSH - private', field='notes') }}"
+    dest: ~/.ssh/id_rsa
+    mode: 0600
+
+- name: SSH Public key
+  copy:
+    content: "{{ lookup('lastpass', 'SSH - public', field='notes') }}"
+    dest: ~/.ssh/id_rsa.pub
+    mode: 0600
