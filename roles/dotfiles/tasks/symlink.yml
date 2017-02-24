@@ -1,6 +1,6 @@
 - name: Symlink {{ src }} from dotfiles repository to {{ dest | default('~/' + src) }}
   file:
-    src: ~/.dotfiles.ansible/{{ src }}
+    src: ~/dotfiles/{{ src }}
     dest: "{{ dest | default('~/' + src) }}"
     state: link
     force: "{{ force | default(false) }}"
