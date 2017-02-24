@@ -7,6 +7,7 @@
     - git
     - monitoring
     - audio
+    - network
     # Terminal env
     - bashrc
     - fish

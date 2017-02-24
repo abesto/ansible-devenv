@@ -1,0 +1,11 @@
+- name: Install NetworkManager
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - network-manager
+    - network-manager-gnome  # applet
+
+- name: Start NetworkManager applet (nm-applet) in xprofile
+  include: roles/xprofile/tasks/xprofile.yml name=nm-applet src=nm-applet priority=20
