@@ -16,17 +16,18 @@
     - xmonad
     - urxvt
     - lightdm
-    - slack
     # IDE
     - vim
     - emacs
     - intellij
     - zeal
-    # Languages
+    # Devenv per technology
     - ruby
     - java
     - scala
+    - docker
     # User apps
     - chrome
     - spotify
     - wmail
+    - slack

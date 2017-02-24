@@ -1,0 +1,41 @@
+- name: Install Docker pre-install dependencies
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+    install_recommends: false
+  with_items:
+    - linux-image-extra-{{ ansible_kernel }}
+    - linux-image-extra-virtual
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- name: Add Docker APT repo GPG key
+  become: true
+  apt_key:
+    url: https://apt.dockerproject.org/gpg
+    id: 58118E89F3A912897C070ADBF76221572C52609D
+
+- name: Add Docker APT repo
+  become: true
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo/ ubuntu-{{ ansible_distribution_release }} main
+
+- name: Install Docker
+  become: true
+  apt:
+    name: docker-engine
+    state: latest
+
+- name: Create docker group
+  group:
+    name: docker
+
+- name: Add user to docker group
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: true
