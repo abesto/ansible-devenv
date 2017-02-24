@@ -1,0 +1,7 @@
+- name: Install easyssh {{ easyssh.version }}
+  become: true
+  get_url:
+    url: https://github.com/abesto/easyssh/releases/download/{{ easyssh.version }}/linux_amd64_easyssh
+    dest: /usr/local/bin/easyssh
+    checksum: "{{ easyssh.checksum }}"
+    mode: 0755

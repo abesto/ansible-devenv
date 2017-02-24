@@ -21,11 +21,12 @@
     - emacs
     - intellij
     - zeal
-    # Devenv per technology
+    # Devenv
     - ruby
     - java
     - scala
     - docker
+    - easyssh
     # User apps
     - chrome
     - spotify
