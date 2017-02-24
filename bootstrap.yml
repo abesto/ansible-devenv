@@ -1,0 +1,5 @@
+- hosts: localhost
+  gather_subset:
+    - "!all"
+  roles:
+    - ssh_keys

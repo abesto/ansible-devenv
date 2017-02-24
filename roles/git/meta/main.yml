@@ -1,2 +1,3 @@
 dependencies:
+  - { role: dotfiles }
   - { role: nodejs }  # for npm, to install git-so-fancy

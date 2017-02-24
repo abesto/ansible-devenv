@@ -1,7 +1,7 @@
 - name: Clone dotfiles repo
   git:
     repo: git@github.com:abesto/dotfiles
-    dest: /home/abesto/dotfiles
+    dest: ~/dotfiles
     force: true
 
 - include: symlink.yml src=bin
