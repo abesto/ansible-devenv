@@ -1,2 +1,8 @@
 - name: Symlink git configuration
   include: roles/dotfiles/tasks/symlink.yml src=.gitconfig
+
+- name: Install git-so-fancy
+  become: true
+  npm:
+    name: diff-so-fancy
+    global: true
