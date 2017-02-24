@@ -1,0 +1,10 @@
+- name: Set up Zeal PPA
+  become: true
+  apt_repository:
+    repo: ppa:zeal-developers/ppa
+
+- name: Install Zeal offline documentation
+  become: true
+  apt:
+    name: zeal
+    state: latest

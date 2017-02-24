@@ -21,6 +21,7 @@
     - vim
     - emacs
     - intellij
+    - zeal
     # Languages
     - ruby
     - java
