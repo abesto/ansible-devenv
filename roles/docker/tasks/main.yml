@@ -23,14 +23,11 @@
   apt_repository:
     repo: deb https://apt.dockerproject.org/repo/ ubuntu-{{ ansible_distribution_release }} main
 
-- name: Install Docker and docker-compose
+- name: Install Docker
   become: true
   apt:
-    name: {{ item }}
+    name: docker-engine
     state: latest
-  with_items:
-    - docker-engine
-    - docker-compose
 
 - name: Create docker group
   group:
