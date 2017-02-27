@@ -9,3 +9,4 @@
     - wget
     - curl
     - jq
+    - tree

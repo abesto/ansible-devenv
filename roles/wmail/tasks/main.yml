@@ -7,7 +7,7 @@
   block:
     - name: Download WMail {{ wmail.version }}
       get_url:
-        url: https://github.com/Thomas101/wmail/releases/download/{{ wmail.version }}/WMail_{{ wmail.version | replace('.', '_') }}_linux_x86_64.deb
+        url: https://github.com/Thomas101/wmail/releases/download/v{{ wmail.version }}/WMail_{{ wmail.version | replace('.', '_') }}_linux_x86_64.deb
         dest: /tmp/wmail.deb
     - name: Install WMail {{ wmail.version }}
       become: true
