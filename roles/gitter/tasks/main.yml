@@ -1,0 +1,15 @@
+- name: Check if WMail is installed and up to date
+  shell: 'apt-cache policy gitter | grep "Installed: {{ gitter.version }}"'
+  register: gitter_installed
+  ignore_errors: yes
+
+- when: gitter_installed.rc != 0
+  block:
+    - name: Download Gitter {{ gitter.version }}
+      get_url:
+        url: https://update.gitter.im/linux64/gitter_{{ gitter.version }}_amd64.deb
+        dest: /tmp/gitter.deb
+    - name: Install Gitter {{ gitter.version }}
+      become: true
+      apt:
+        deb: /tmp/gitter.deb
