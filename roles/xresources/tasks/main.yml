@@ -1,5 +1,6 @@
-- name: Symlink .XResources and .XResources.d
+- name: Symlink .XResources, .XResources.d, and ~/.Xmodmap
   include: roles/dotfiles/tasks/symlink.yml src={{ item }}
   with_items:
     - .Xresources
     - .Xresources.d
+    - .Xmodmap
