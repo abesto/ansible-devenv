@@ -10,6 +10,7 @@
     - scrot
     - cabal-install
     - gpicview
+    - xbacklight
 
 - name: Install yeganesh with cabal
   shell: cabal update; cabal install yeganesh
