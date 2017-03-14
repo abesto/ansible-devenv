@@ -19,6 +19,7 @@
     - xmonad
     - urxvt
     - lightdm
+    - dunst
     # IDE
     - vim
     - emacs

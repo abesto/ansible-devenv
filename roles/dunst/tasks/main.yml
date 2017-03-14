@@ -1,0 +1,45 @@
+- name: Install dunst build dependencies
+  become: true
+  apt:
+    package: "{{ item }}"
+  with_items:
+    - libdbus-1-dev
+    - libx11-dev
+    - libxext-dev
+    - libxft-dev
+    - libxss-dev
+    - libglib2.0-dev
+    - libpango1.0-dev
+    - libgtk2.0-dev
+    - libxdg-basedir-dev
+
+- name: Check if dunst is at {{ dunst.version }}
+  shell: dunst --version | grep {{ dunst.version }}
+  ignore_errors: true
+  register: dunst_installed
+
+- when: dunst_installed.rc != 0
+  block:
+    - name: Check out dunst at {{ dunst.version }}
+      git:
+        dest: ~/dunst
+        repo: git@github.com:dunst-project/dunst.git
+        refspec: "{{ dunst.version }}"
+      register: dunst_git
+
+    - name: Compile dunst at {{ dunst.version }}
+      shell: echo {{ dunst.version }} > VERSION && make clean all && rm VERSION
+      args:
+        chdir: ~/dunst
+
+    - name: Install dunst at {{ dunst.version }}
+      become: true
+      shell: PREFIX=/usr make install
+      args:
+        chdir: "{{ ansible_env.HOME }}/dunst"
+
+- name: Start dunst in xprofile
+  include: roles/xprofile/tasks/xprofile.yml name=dunst src=dunst priority=20
+
+- name: Symlink dunstrc
+  include: roles/dotfiles/tasks/symlink.yml src=.config/dunst
