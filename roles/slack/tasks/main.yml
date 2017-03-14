@@ -4,12 +4,7 @@
   ignore_errors: yes
 
 - when: slack_installed.rc != 0
-  block:
-    - name: Download Slack {{ slack.version }}
-      get_url:
-        url: https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack.version }}-amd64.deb
-        dest: /tmp/slack.deb
-    - name: Install Slack {{ slack.version }}
-      become: true
-      apt:
-        deb: /tmp/slack.deb
+  name: Install Slack {{ slack.version }}
+  become: true
+  apt:
+    deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack.version }}-amd64.deb

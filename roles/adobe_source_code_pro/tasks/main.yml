@@ -7,4 +7,4 @@
 
 - name: Install Adobe Source Code Pro
   include: install.yml
-  when: "{{ adobe_source_code_pro_download.changed }}"
+  when: adobe_source_code_pro_download.changed

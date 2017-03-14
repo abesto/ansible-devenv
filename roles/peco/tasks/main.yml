@@ -7,4 +7,4 @@
 
 - name: Install peco
   include: install.yml
-  when: "{{ peco_download.changed }}" 
+  when: peco_download.changed
