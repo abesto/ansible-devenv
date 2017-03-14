@@ -1,0 +1,41 @@
+- name: Dell XPS 15 touchpad quirk
+  become: true
+  copy:
+    src: 51-synaptics-xps15.conf
+    dest: /usr/share/X11/xorg.conf.d/51-synaptics-xps15.conf
+
+- name: Install power / heat management utilities
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - powertop
+    - powerstat
+    - pm-utils
+    - laptop-mode-tools
+
+- name: Enable SATA Link Power Management
+  become: true
+  copy:
+    dest: /etc/pm/config.d/sata_alpm
+    content: SATA_ALPM_ENABLE=true
+
+- name: Install Bumblebee
+  become: true
+  apt:
+    # Minimal install with no recommended packages, so that Bumblebee uses the OSS NVidia driver that comes with Ubuntu
+    name: bumblebee
+    install_recommends: no
+
+- name: Tell QT about HiDPI screen
+  become: true
+  copy:
+    dest: /etc/profile.d/qt-hidpi.sh
+    content: export QT_DEVICE_PIXEL_RATIO=2
+    mode: o+x
+
+- name: Enable TearFree on Xorg
+  become: true
+  copy:
+    src: 20-tearfree.conf
+    dest: /usr/share/X11/xorg.conf.d/20-tearfree.conf

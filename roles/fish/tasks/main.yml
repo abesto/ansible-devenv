@@ -1,3 +1,8 @@
+- name: Set up fish shell PPA
+  become: true
+  apt_repository:
+    repo: ppa:fish-shell/release-2
+
 - name: Install fish shell and friends
   become: true
   apt:
@@ -22,7 +27,7 @@
     - metro
 
 - name: Install fish customizations
-  include: tasks/fisher_package.yml name=abesto src=~/dotfiles/fish-abesto 
+  include: tasks/fisher_package.yml name=abesto src=~/dotfiles/fish-abesto
 
 - name: As last step of bash startup, exec fish
   include: roles/bashrc/tasks/bashrc.yml name=exec-fish.sh src=files/exec-fish.sh priority=99

@@ -37,3 +37,5 @@
     - wmail
     - slack
     - gitter
+    # Hardware specific
+    - dell_xps_15
