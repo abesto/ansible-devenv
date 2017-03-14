@@ -31,6 +31,7 @@
     - scala
     - docker
     - easyssh
+    - aws
     # User apps
     - chrome
     - spotify

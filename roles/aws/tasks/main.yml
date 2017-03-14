@@ -1,0 +1,14 @@
+- name: Install AWS CLI
+  become: true
+  apt:
+    package: awscli
+
+- name: Create ~/.aws
+  file:
+    path: ~/.aws
+    state: directory
+
+- name: Create ~/.aws/credentials
+  template:
+    dest: ~/.aws/credentials
+    src: credentials
