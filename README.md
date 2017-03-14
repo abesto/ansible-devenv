@@ -8,4 +8,6 @@ git clone https://github.com/abesto/ansible-devenv
 cd ansible-devenv
 ./bootstrap.sh $EMAIL
 ./apply.sh
+dropbox start -i  # needs manual setup, can't find a way to automate
+dropbox autostart y
 ```

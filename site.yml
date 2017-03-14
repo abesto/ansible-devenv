@@ -37,5 +37,7 @@
     - wmail
     - slack
     - gitter
+    - yubico
+    - dropbox
     # Hardware specific
     - dell_xps_15

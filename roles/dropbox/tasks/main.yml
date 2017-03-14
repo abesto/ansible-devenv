@@ -1,0 +1,16 @@
+- name: Install python-gpgme to verify signatures for Dropbox installation
+  become: true
+  apt:
+    package: python-gpgme
+    state: latest
+
+- name: Check if Dropbox is installed and up to date
+  shell: 'apt-cache policy dropbox | grep "Installed: {{ dropbox.version }}"'
+  register: dropbox_installed
+  ignore_errors: yes
+
+- name: Install Dropbox {{ dropbox.version }}
+  when: dropbox_installed.rc != 0
+  become: true
+  apt:
+    deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_{{ dropbox.version }}_amd64.deb
