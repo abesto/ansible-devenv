@@ -1,5 +1,58 @@
-- name: Install LastPass CLI
-  become: true
-  apt:
-    name: lastpass-cli
-    state: latest
+- name: Check if lastpass-cli is installed and up to date
+  shell: 'lpass --version | grep "{{ lastpass_cli.version }}"'
+  register: lastpass_cli_installed
+  ignore_errors: yes
+
+- when: lastpass_cli_installed.rc != 0
+  block:
+    - name: Install build dependencies
+      become: true
+      apt:
+        package: "{{ item }}"
+        state: latest
+      with_items:
+        - openssl
+        - libcurl4-openssl-dev
+        - libxml2
+        - libssl-dev
+        - libxml2-dev
+        - pinentry-curses
+        - xclip
+        - asciidoc
+
+    - name: Create ~/lastpass
+      file:
+        path: ~/lastpass
+        state: directory
+
+    - name: Download tarball
+      get_url:
+        url: https://github.com/lastpass/lastpass-cli/archive/v{{ lastpass_cli.version }}.tar.gz
+        dest: ~/lastpass/lastpass-cli-{{ lastpass_cli.version }}.tar.gz
+
+    - name: Extract tarball
+      unarchive:
+        src: ~/lastpass/lastpass-cli-{{ lastpass_cli.version }}.tar.gz
+        dest: ~/lastpass/
+
+    - name: cmake
+      shell: cmake .
+      args:
+        chdir: ~/lastpass/lastpass-cli-{{ lastpass_cli.version }}
+
+    - name: make
+      make:
+        chdir: "{{ ansible_env.HOME }}/lastpass/lastpass-cli-{{ lastpass_cli.version }}"
+
+    - name: make install install-doc
+      become: true
+      make:
+        chdir: "{{ ansible_env.HOME }}/lastpass/lastpass-cli-{{ lastpass_cli.version }}"
+        target: "{{ item }}"
+      with_items:
+        - install
+        - install-doc
+
+- name: Disable usage of pinentry in LastPass CLI
+  # because it uses a GUI if it can and it's annoying as hell
+  include: roles/bashrc/tasks/bashrc.yml name=lastpass_disable_pinentry src=files/lastpass_disable_pinentry.sh priority=10

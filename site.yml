@@ -42,5 +42,6 @@
     - yubico
     - dropbox
     - keybase
+    - lastpass
     # Hardware specific
     - dell_xps_15

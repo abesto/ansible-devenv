@@ -22,7 +22,7 @@ tar -xzf v1.1.2.tar.gz
 cd lastpass-cli-1.1.2
 cmake .
 make
-sudo make install
+sudo make install install-doc
 popd
 
 echo 'LastPass login...'
