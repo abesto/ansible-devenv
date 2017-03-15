@@ -8,3 +8,5 @@
     - atop
     - iotop
     - nethogs
+    - ngrep
+    - wireshark
