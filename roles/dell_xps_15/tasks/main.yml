@@ -27,6 +27,11 @@
     name: bumblebee
     install_recommends: no
 
+- name: Install Primus
+  become: true
+  apt:
+    package: primus
+
 - name: Tell QT about HiDPI screen
   become: true
   copy:
