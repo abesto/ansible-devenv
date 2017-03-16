@@ -12,3 +12,9 @@
     repo: https://github.com/syl20bnr/spacemacs
     dest: ~/.emacs.d
     update: no
+
+- name: pip install jedi   # needed by anaconda-mode
+  become: true
+  pip:
+    name: jedi
+    state: latest
