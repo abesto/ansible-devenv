@@ -33,6 +33,7 @@
     - docker
     - easyssh
     - aws
+    - terraform
     # User apps
     - chrome
     - spotify
