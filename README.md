@@ -10,6 +10,9 @@ git clone https://github.com/abesto/ansible-devenv
 cd ansible-devenv
 ./bootstrap.sh $EMAIL
 ./apply.sh
-dropbox start -i  # needs manual setup, can't find a way to automate
-dropbox autostart y
+# manually log in to dropbox
+dropbox start -i
+# manually log in to keybase, add private key to SSH
+keybase login
+keybase pgp export -s | gpg --allow-secret-key-import --import
 ```
