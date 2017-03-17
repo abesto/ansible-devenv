@@ -14,3 +14,6 @@
   become: true
   apt:
     deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_{{ dropbox.version }}_amd64.deb
+
+- name: Auto-start Dropbox from .xprofile.d
+  include: roles/xprofile/tasks/xprofile.yml name=dropbox src=dropbox priority=30
