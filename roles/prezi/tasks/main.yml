@@ -22,3 +22,8 @@
   template:
     src: pip.conf
     dest: ~/.pip/pip.conf
+
+- name: ~/.gradle/gradle.properties
+  template:
+    src: gradle.properties
+    dest: ~/.gradle/gradle.properties
