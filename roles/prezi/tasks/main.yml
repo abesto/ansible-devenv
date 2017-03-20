@@ -2,3 +2,23 @@
   template:
     src: prezicurl.config
     dest: ~/.prezi/config
+
+- name: Create ~/.chef
+  file:
+    path: ~/.chef
+    state: directory
+
+- name: ~/.chef/abesto.pem
+  template:
+    src: abesto.pem
+    dest: ~/.chef/abesto.pem
+
+- name: Create ~/.pip
+  file:
+    path: ~/.pip
+    state: directory
+
+- name: ~/.pip/pip.conf
+  template:
+    src: pip.conf
+    dest: ~/.pip/pip.conf
