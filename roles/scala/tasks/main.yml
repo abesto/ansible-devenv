@@ -40,3 +40,4 @@
   with_items:
    - .sbt/0.13/plugins/build.sbt
    - .sbt/0.13/plugins/plugins.sbt
+   - .sbt/0.13/global.sbt
