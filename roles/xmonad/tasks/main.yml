@@ -44,3 +44,16 @@
 
 - name: Set keyboard repeat rate
   include: roles/xprofile/tasks/xprofile.yml name=keyboard-repeat src=keyboard-repeat priority=20
+
+- name: Create systemd unit to lock screen on suspend
+  become: true
+  copy:
+    src: files/lock-on-suspend@.service
+    dest: /etc/systemd/system/lock-on-suspend@.service
+
+- name: Enable systemd unit to lock screen on suspend
+  become: true
+  systemd:
+    name: lock-on-suspend@{{ ansible_user_id }}
+    enabled: true
+    daemon_reload: true
