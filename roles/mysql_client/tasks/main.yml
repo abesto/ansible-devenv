@@ -1,0 +1,7 @@
+- name: Install mysql-client and libmysqlclient-dev
+  become: true
+  apt:
+    package: "{{ item }}"
+  with_items:
+    - mysql-client
+    - libmysqlclient-dev

@@ -1,5 +1,5 @@
 - name: Check if terraform is installed and up to date
-  shell: terraform version | grep {{ terraform.version }}
+  shell: terraform version | head -n1 | grep {{ terraform.version }}
   ignore_errors: yes
   register: terraform_installed
 
