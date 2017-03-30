@@ -1,3 +1,8 @@
+- name: Create ~/.prezi
+  file:
+    path: ~/.prezi
+    state: directory
+
 - name: ~/.prezi/config
   template:
     src: prezicurl.config
