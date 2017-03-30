@@ -20,6 +20,7 @@
     - urxvt
     - lightdm
     - dunst
+    - autocutsel
     # IDE
     - vim
     - emacs
