@@ -4,6 +4,9 @@
     src: 51-synaptics-xps15.conf
     dest: /usr/share/X11/xorg.conf.d/51-synaptics-xps15.conf
 
+- name: Start syndaemon from xprofile
+  include: roles/xprofile/tasks/xprofile.yml name=syndaemon priority=20 src=syndaemon
+
 - name: Install power / heat management utilities
   become: true
   apt:
