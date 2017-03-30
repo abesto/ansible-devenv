@@ -1,0 +1,2 @@
+syndaemon -K -i 0.5 -R -d -t
+synclient CoastingSpeed=0
