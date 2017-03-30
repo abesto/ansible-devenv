@@ -13,6 +13,7 @@
     - powerstat
     - pm-utils
     - laptop-mode-tools
+    - lm-sensors
 
 - name: Enable SATA Link Power Management
   become: true
