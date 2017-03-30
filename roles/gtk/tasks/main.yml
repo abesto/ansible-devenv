@@ -1,0 +1,5 @@
+- name: Symlink GTK2 config
+  include: roles/dotfiles/tasks/symlink.yml src=.gtkrc-2.0
+
+- name: Symlink GTK3 config
+  include: roles/dotfiles/tasks/symlink.yml src=.config/gtk-3.0/settings.ini

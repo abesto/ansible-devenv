@@ -21,6 +21,7 @@
     - lightdm
     - dunst
     - autocutsel
+    - gtk
     # IDE
     - vim
     - emacs
