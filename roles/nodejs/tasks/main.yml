@@ -1,3 +1,16 @@
+- name: Add NodeSource deb signing key
+  become: true
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+
+- name: Add NodeSource apt repository
+  become: true
+  apt_repository:
+    repo: "{{ item }}"
+  with_items:
+    - "deb https://deb.nodesource.com/node_7.x xenial main"
+    - "deb-src https://deb.nodesource.com/node_7.x xenial main"
+
 - name: Install nodejs and friends
   become: true
   apt:
@@ -6,3 +19,18 @@
   with_items:
     - nodejs
     - npm
+
+- name: Add Yarn deb signing key
+  become: true
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+
+- name: Add Yarn apt repository
+  become: true
+  apt_repository:
+    repo: "deb https://dl.yarnpkg.com/debian/ stable main"
+
+- name: Install Yarn
+  become: true
+  apt:
+    package: yarn
