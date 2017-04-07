@@ -2,7 +2,7 @@ Development environment managed with Ansible.
 
 ## First run
  * **Dell XPS 15 9560** Switch SATA from Intel RAID to AHCI in BIOS
- * Install Ubuntu Xenial Desktop
+ * Install Ubuntu Yakkety Desktop
 
 ```
 sudo apt-get install -y git python-pip

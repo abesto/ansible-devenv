@@ -8,17 +8,14 @@
   apt_repository:
     repo: "{{ item }}"
   with_items:
-    - "deb https://deb.nodesource.com/node_7.x xenial main"
-    - "deb-src https://deb.nodesource.com/node_7.x xenial main"
+    - "deb https://deb.nodesource.com/node_7.x yakkety main"
+    - "deb-src https://deb.nodesource.com/node_7.x yakkety main"
 
 - name: Install nodejs and friends
   become: true
   apt:
-    name: "{{ item }}"
+    name: nodejs
     state: latest
-  with_items:
-    - nodejs
-    - npm
 
 - name: Add Yarn deb signing key
   become: true
