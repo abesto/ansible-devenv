@@ -57,3 +57,6 @@
     name: lock-on-suspend@{{ ansible_user_id }}
     enabled: true
     daemon_reload: true
+
+- name: Start gnome-screensaver on login
+  include: roles/xprofile/tasks/xprofile.yml name=gnome-screensaver src=gnome-screensaver priority=20
