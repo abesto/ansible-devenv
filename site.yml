@@ -34,6 +34,7 @@
     - easyssh
     - aws
     - terraform
+    - packer
     - mysql_client
     # User apps
     - chrome
