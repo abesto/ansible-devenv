@@ -20,6 +20,7 @@
     - urxvt
     - lightdm
     - dunst
+    - xcompose
     # IDE
     - vim
     - emacs
