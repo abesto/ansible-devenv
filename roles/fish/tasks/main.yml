@@ -13,7 +13,6 @@
     - fish
     - fortune-mod
     - most
-    - pyenv
 
 - name: Install fisher
   command: curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
@@ -26,6 +25,7 @@
     - z
     - rvm
     - metro
+    - pyenv
 
 - name: Install fish customizations
   include: tasks/fisher_package.yml name=abesto src=~/dotfiles/fish-abesto
