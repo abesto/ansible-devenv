@@ -48,3 +48,19 @@
   copy:
     src: 20-tearfree.conf
     dest: /usr/share/X11/xorg.conf.d/20-tearfree.conf
+
+- name: Install Bluetooth firmware
+  become: true
+  copy:
+    src: BCM-0a5c-6410.hcd
+    dest: /lib/firmware/brcm/BCM-0a5c-6410.hcd
+
+- name: Install Bluetooth utilities
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - bluez
+    - bluez-utils
+    - blueman
+    - bluetooth-applet
