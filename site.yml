@@ -27,6 +27,7 @@
     - intellij
     - zeal
     # Devenv
+    - python
     - nodejs
     - ruby
     - java
