@@ -4,7 +4,13 @@
     url: https://zoom.us/linux/download/pubkey
     id: 61A7C71D
 
+- name: Check if Zoom.us is installed and up to date
+  shell: 'apt-cache policy zoom | grep "Installed: {{ zoom.version }}"'
+  register: zoom_installed
+  ignore_errors: yes
+
 - name: Install zoom.us
   become: true
+  when: zoom_installed.rc != 0
   apt:
     deb: https://zoom.us/client/latest/zoom_amd64.deb
