@@ -61,6 +61,5 @@
     name: "{{ item }}"
   with_items:
     - bluez
-    - bluez-utils
+    - bluez-tools
     - blueman
-    - bluetooth-applet
