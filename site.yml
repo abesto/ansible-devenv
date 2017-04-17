@@ -50,6 +50,7 @@
     - keybase
     - lastpass
     - prey
+    - borgbackup
     # Hardware specific
     - dell_xps_15
     # Prezi specific

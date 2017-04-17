@@ -1,0 +1,12 @@
+- name: Check if borgbackup is installed and up to date
+  shell: "borg --version | grep {{ borg.version }}"
+  ignore_errors: true
+  register: borg_installed
+
+- name: Install borgbackup {{ borg.version }} if needed
+  when: borg_installed.rc != 0
+  become: true
+  get_url:
+    url: https://github.com/borgbackup/borg/releases/download/{{ borg.version }}/borg-linux64
+    mode: 0755
+    dest: /usr/local/bin/borg
