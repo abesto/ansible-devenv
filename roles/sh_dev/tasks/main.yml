@@ -1,0 +1,6 @@
+- name: Install shell development tools
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - shellcheck
+    - bats
