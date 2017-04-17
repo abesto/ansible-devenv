@@ -39,3 +39,17 @@
     name: "{{ ansible_user_id }}"
     groups: docker
     append: true
+
+- name: Install docker-compose
+  pip:
+    virtualenv: ~/docker-compose
+    virtualenv_python: python3
+    name: docker-compose
+    state: latest
+
+- name: Symlink docker-compose
+  become: true
+  file:
+    src: "{{ ansible_env.HOME }}/docker-compose/bin/docker-compose"
+    dest: /usr/local/bin/docker-compose
+    state: link
