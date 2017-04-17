@@ -10,3 +10,4 @@
     - curl
     - jq
     - tree
+    - pcregrep
