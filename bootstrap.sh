@@ -12,7 +12,7 @@ sudo apt-get install -y virtualenv libssl-dev cmake
 echo 'Creating virtualenv with Ansible snapshot (for lastpass integration)...'
 virtualenv virtualenv
 set +u; . virtualenv/bin/activate; set -u
-sudo pip install 'git+https://github.com/ansible/ansible#egg=ansible'  # replace with ansible from apt once lastpass lookup plugin is released
+pip install ansible  # replace with ansible from apt once 2.3 reaches Apt
 
 echo 'Installing lastpass-cli from source (Ubuntu has a broken, old version)...'
 mkdir -p ~/lastpass
