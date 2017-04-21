@@ -1,4 +1,5 @@
 - name: Install shell development tools
+  become: true
   apt:
     name: "{{ item }}"
   with_items:
