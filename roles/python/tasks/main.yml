@@ -23,3 +23,12 @@
   with_items:
     - libbz2-dev
     - libreadline-dev
+
+- name: Install dependencies commonly used by Python modules
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - libxml2-dev
+    - libxslt-dev
+    - swig
