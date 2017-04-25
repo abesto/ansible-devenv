@@ -6,3 +6,15 @@
   npm:
     name: diff-so-fancy
     global: true
+
+- name: Set up PPA for hub GitHub client
+  become: true
+  apt_repository:
+    repo: ppa:cpick/hub
+    codename: 'xenial'  # no packages for Yakkety at the time of writing, but the Xenial packages should work fine
+
+- name: Install hub GitHub client
+  become: true
+  apt:
+    name: hub
+    state: latest
