@@ -35,7 +35,6 @@
     - scala
     - docker
     - easyssh
-    - aws
     - terraform
     - packer
     - mysql_client
@@ -48,10 +47,4 @@
     - dropbox
     - keybase
     - lastpass
-    - prey
     - borgbackup
-    # Hardware specific
-    - dell_xps_15
-    # Prezi specific
-    - prezi
-    - zoom_us

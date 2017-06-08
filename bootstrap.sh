@@ -7,7 +7,9 @@ sudo apt-get update
 sudo apt-get upgrade
 
 echo 'Installing packages required to build ansible, lastpass-cli from source...'
-sudo apt-get install -y virtualenv libssl-dev cmake
+sudo apt-get install --no-install-recommends \
+	virtualenv libssl-dev cmake libffi-dev libcurl4-openssl-dev \
+	asciidoc xsltproc
 
 echo 'Creating virtualenv with Ansible snapshot (for lastpass integration)...'
 virtualenv virtualenv

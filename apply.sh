@@ -3,8 +3,10 @@
 set -euo pipefail
 set +u; . virtualenv/bin/activate; set -u  # remove once lastpass lookup plugin is released
 
+site="$1"; shift
+
 if ! lpass status; then
-    lpass login zoltan.nagy@prezi.com
+    lpass login <(cat $site)
 fi
 
-ansible-playbook -v site.yml -i inventory --ask-become-pass "$@"
+ansible-playbook -i inventory --ask-become-pass -v "$site.yml" "$@"

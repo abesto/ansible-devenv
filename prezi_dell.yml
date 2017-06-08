@@ -1,0 +1,10 @@
+- include: common.yml
+
+- hosts: localhost
+  roles:
+    - prezi
+    - zoom_us
+    - prey
+    - aws
+  tasks:
+    - include: roles/network/tasks/vpn.yml
