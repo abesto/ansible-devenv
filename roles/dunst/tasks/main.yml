@@ -42,4 +42,4 @@
   include: roles/xprofile/tasks/xprofile.yml name=dunst src=dunst priority=20
 
 - name: Symlink dunstrc
-  include: roles/dotfiles/tasks/symlink.yml src=.config/dunst
+  include: roles/dotfiles/tasks/symlink.yml src=.config/dunst_{{ ansible_local.display_resolution.name }} dest=~/.config/dunst
