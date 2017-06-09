@@ -60,7 +60,5 @@
     - include: roles/network/tasks/vpn.yml
 
 - hosts: single_role
-  tasks:
-    - shell: echo {{ inventory_hostname }}
   roles:
     - "{{ role_to_run | default('') }}"
