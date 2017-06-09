@@ -14,3 +14,10 @@
   become: true
   apt:
     name: wavebox
+
+- name: Symlink Wavebox into /usr/local/bin
+  become: true
+  file:
+    src: /opt/wavebox/Wavebox
+    dest: /usr/local/bin/wavebox
+    state: link
