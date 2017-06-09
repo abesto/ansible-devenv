@@ -13,7 +13,6 @@
   become: true
   apt:
     name: sbt
-    state: latest
 
 - name: Download Scalastyle
   become: true

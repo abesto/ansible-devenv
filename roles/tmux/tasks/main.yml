@@ -2,7 +2,6 @@
   become: true
   apt:
     name: tmux
-    state: latest
 
 - name: Create ~/.tmux/plugins
   file:

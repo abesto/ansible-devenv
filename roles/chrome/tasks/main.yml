@@ -15,4 +15,3 @@
   become: true
   apt:
     name: google-chrome-stable
-    state: latest

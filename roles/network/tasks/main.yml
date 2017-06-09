@@ -2,7 +2,6 @@
   become: true
   apt:
     name: "{{ item }}"
-    state: latest
   with_items:
     - network-manager
     - network-manager-gnome  # applet

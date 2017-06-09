@@ -15,7 +15,6 @@
   become: true
   apt:
     name: nodejs
-    state: latest
 
 - name: Add Yarn deb signing key
   become: true

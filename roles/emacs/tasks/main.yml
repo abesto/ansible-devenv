@@ -2,7 +2,6 @@
   become: true
   apt:
     name: emacs
-    state: latest
 
 - name: Symlink .spacemacs
   include: roles/dotfiles/tasks/symlink.yml src=.spacemacs
@@ -17,4 +16,3 @@
   become: true
   pip:
     name: jedi
-    state: latest

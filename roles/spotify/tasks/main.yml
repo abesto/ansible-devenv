@@ -14,4 +14,3 @@
   become: true
   apt:
     name: spotify-client
-    state: latest

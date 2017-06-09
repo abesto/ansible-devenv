@@ -16,4 +16,3 @@
   become: true
   apt:
     name: hub
-    state: latest

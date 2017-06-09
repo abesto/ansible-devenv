@@ -2,7 +2,6 @@
   become: true
   apt:
     package: python-gpgme
-    state: latest
 
 - name: Check if Dropbox is installed and up to date
   shell: 'apt-cache policy dropbox | grep "Installed: {{ dropbox.version }}"'

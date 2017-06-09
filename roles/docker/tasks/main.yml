@@ -2,7 +2,6 @@
   become: true
   apt:
     name: "{{ item }}"
-    state: latest
     install_recommends: false
   with_items:
     - linux-image-extra-{{ ansible_kernel }}
@@ -27,7 +26,6 @@
   become: true
   apt:
     name: docker-engine
-    state: latest
 
 - name: Create docker group
   group:
@@ -45,7 +43,6 @@
     virtualenv: ~/docker-compose
     virtualenv_python: python3
     name: docker-compose
-    state: latest
 
 - name: Symlink docker-compose
   become: true

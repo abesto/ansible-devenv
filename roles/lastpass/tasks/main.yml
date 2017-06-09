@@ -9,7 +9,6 @@
       become: true
       apt:
         package: "{{ item }}"
-        state: latest
       with_items:
         - openssl
         - libcurl4-openssl-dev

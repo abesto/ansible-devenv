@@ -2,7 +2,6 @@
   become: true
   apt:
     name: vim
-    state: latest
 
 - name: Symlink .vimrc
   include: roles/dotfiles/tasks/symlink.yml src=.vimrc
