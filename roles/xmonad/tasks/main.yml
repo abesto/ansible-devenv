@@ -50,6 +50,9 @@
 - name: Set keyboard repeat rate
   include: roles/xprofile/tasks/xprofile.yml name=keyboard-repeat src=keyboard-repeat priority=20
 
+- name: Disable mouse acceleration
+  include: roles/xprofile/tasks/xprofile.yml name=disable-mouse-acceleration src=disable-mouse-acceleration priority=20
+
 - name: Create systemd unit to lock screen on suspend
   become: true
   copy:
