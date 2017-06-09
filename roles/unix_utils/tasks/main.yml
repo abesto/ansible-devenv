@@ -11,3 +11,4 @@
     - jq
     - tree
     - pcregrep
+    - net-tools
