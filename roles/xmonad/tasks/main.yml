@@ -33,14 +33,14 @@
     path: ~/.config/xmobar
     state: directory
 
-- name: Symlink configuration for XMonad and friends
-  include: roles/dotfiles/tasks/symlink.yml src={{ item }}
-  with_items:
-    - .xmonad
-    - .config/xmobar/xmobarrc
+- name: Symlink configuration for XMonad
+  include: roles/dotfiles/tasks/symlink.yml src=.xmonad
 
-- name: Symlink resolution-aware configuration for XMonad and friends
-  include: roles/dotfiles/tasks/symlink.yml dest=~/{{ item }} src={{ item }}_{{ ansible_local.display_resolution.name }}
+- name: Symlink xmobar configuration
+  include: roles/dotfiles/tasks/symlink.yml src=.config/xmobar/xmobarrc_{{ site }} dest=~/.config/xmobar/xmobarrc
+
+- name: Symlink stalonetray configuration
+  include: roles/dotfiles/tasks/symlink.yml dest=~/.stalonetrayrc src=.stalonetrayrc_{{ ansible_local.display_resolution.name }}
   with_items:
     - .stalonetrayrc
 

@@ -8,4 +8,4 @@ role="$1"; shift
 
 echo "Applying role $role with site $site."
 
-bash -x ./apply.sh single_role "$site" --extra-vars "role_to_run=${role}" "$@"
+./apply.sh single_role "$site" --extra-vars "role_to_run=${role} site=${site}" "$@"
