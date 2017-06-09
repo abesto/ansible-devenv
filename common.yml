@@ -21,6 +21,7 @@
     - lightdm
     - dunst
     - xcompose
+    - autocutsel
     # IDE
     - vim
     - emacs
