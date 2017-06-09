@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: home_desktop, prezi_dell
   gather_subset:
     - "!all"
   roles:
@@ -49,3 +49,16 @@
     - keybase
     - lastpass
     - borgbackup
+
+- hosts: prezi_dell
+  roles:
+    - prezi
+    - zoom_us
+    - prey
+    - aws
+  tasks:
+    - include: roles/network/tasks/vpn.yml
+
+- hosts: single_role
+  roles:
+    - "{{ role_to_run }}"

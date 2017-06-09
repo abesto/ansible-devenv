@@ -6,22 +6,6 @@ set -euo pipefail
 site="$1"; shift
 role="$1"; shift
 
-cat > "$role.yml" <<EOF
-- hosts: localhost
-  gather_subset:
-    - "!all"
-  roles:
-    - $role
-EOF
-trap "rm -v $role.yml" EXIT
+echo "Applying role $role with site $site."
 
-echo "Applying role $role. Playbook follows."
-echo "******************"
-cat "$role.yml"
-echo "******************"
-echo
-
-cp "$site.email" "$role.email"
-trap "rm -v $role.yml $role.email" EXIT
-
-./apply.sh "$role" "$@"
+bash -x ./apply.sh single_role "$site" --extra-vars "role_to_run=${role}" "$@"
