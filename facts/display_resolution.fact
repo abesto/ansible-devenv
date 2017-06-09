@@ -1,0 +1,19 @@
+#!/bin/bash
+
+width="$(xvidtune -show | head -n1 | awk '{print $3}')"
+height="$(xvidtune -show | head -n1 | awk '{print $7}')"
+
+echo '{'
+
+echo -n '"name": "'
+case "${width}x${height}" in
+    1920x1080) echo -n fhd;;
+    4096x2160) echo -n 4k;;
+    *) echo -n "${width}_${height}";;
+esac
+echo '"'
+
+echo ",\"width\": $width"
+echo ",\"height\": $height"
+
+echo '}'

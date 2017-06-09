@@ -33,11 +33,16 @@
     path: ~/.config/xmobar
     state: directory
 
-- name: Symlink XMonad configuration
+- name: Symlink configuration for XMonad and friends
   include: roles/dotfiles/tasks/symlink.yml src={{ item }}
   with_items:
     - .xmonad
     - .config/xmobar/xmobarrc
+
+- name: Symlink resolution-aware configuration for XMonad and friends
+  include: roles/dotfiles/tasks/symlink.yml dest=~/{{ item }} src={{ item }}_{{ ansible_local.display_resolution.name }}
+  with_items:
+    - .stalonetrayrc
 
 - name: Start stalonetray from .xprofile
   include: roles/xprofile/tasks/xprofile.yml name=stalonetray src=stalonetray priority=20
