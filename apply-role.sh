@@ -8,7 +8,7 @@ site="$1"; shift
 role="$1"; shift
 
 if ! lpass status; then
-    lpass login <(cat $site)
+    lpass login "$(cat "$site".email)"
 fi
 
 trap "rm -v $role.yml" EXIT
