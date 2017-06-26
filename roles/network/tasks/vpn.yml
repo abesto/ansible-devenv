@@ -24,7 +24,7 @@
 - name: VPN systemd unit
   become: true
   copy:
-    src: vpn.service
+    src: roles/network/files/vpn.service
     dest: /lib/systemd/system/vpn.service
   register: vpn_systemd_unit
 
