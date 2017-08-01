@@ -1,8 +1,34 @@
-- name: Check if IntelliJ IDEA Ultimate {{ intellij.idea.version }} is installed
+- name: Check if IntelliJ IDEA {{ intellij_flavor }} {{ intellij[intellij_flavor].version }} is installed
   command: cat ~/.idea-version
   ignore_errors: true
   register: check_intellij
 
-- name: Install IntelliJ IDEA Ultimate {{ intellij.idea.version }}
-  when: check_intellij.stdout != intellij.idea.version
-  include: install.yml
+- when: check_intellij.stdout != intellij[intellij_flavor].version
+  block:
+  - name: Download IntelliJ IDEA {{ intellij_flavor }} {{ intellij[intellij_flavor].version }}
+    get_url:
+      url: https://download.jetbrains.com/idea/{{ intellij[intellij_flavor].version }}.tar.gz
+      checksum: "{{ intellij[intellij_flavor].checksum }}"
+      dest: /tmp/idea.tar.gz
+
+  - name: Figure out root dir name of IDEA distribution
+    shell: tar tzf /tmp/idea.tar.gz | head -n1 | sed -e 's/\/.*//'
+    register: idea_path
+
+  - name: Unarchive IntelliJ IDEA Ultimate {{ intellij[intellij_flavor].version }}
+    become: true
+    unarchive:
+      src: /tmp/idea.tar.gz
+      dest: /opt/
+
+  - name: Symlink IntelliJ IDEA Ultimate {{ intellij[intellij_flavor].version }} idea.sh to /usr/local/bin/idea
+    become: true
+    file:
+      src: /opt/{{ idea_path.stdout }}/bin/idea.sh
+      dest: /usr/local/bin/idea
+      state: link
+
+  - name: Save IntelliJ IDEA Ultimate {{ intellij[intellij_flavor].version }} version to state file
+    copy:
+      content: "{{ intellij[intellij_flavor].version }}"
+      dest: ~/.idea-version
