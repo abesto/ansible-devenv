@@ -60,6 +60,10 @@
   tasks:
     - include: roles/network/tasks/vpn.yml
 
+- hosts: home_desktop
+  roles:
+    - elixir
+
 - hosts: single_role
   roles:
     - "{{ role_to_run | default('') }}"

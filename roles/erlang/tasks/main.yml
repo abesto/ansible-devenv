@@ -1,0 +1,14 @@
+- name: Accept Erlang Solutions signing key
+  become: true
+  apt_key:
+    url: https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
+
+- name: Add Erlang Solutions repository
+  become: true
+  apt_repository:
+    repo: deb https://packages.erlang-solutions.com/ubuntu {{ ansible_distribution_release }} contrib
+
+- name: Install Erlang
+  become: true
+  apt:
+    name: esl-erlang
