@@ -1,5 +1,5 @@
-- name: Check if keybase is installed and up to date
-  shell: 'apt-cache policy keybase | grep "Installed: {{ keybase.version }}"'
+- name: Check if keybase is installed
+  shell: 'apt-cache policy keybase | grep "Installed:"'
   register: keybase_installed
   ignore_errors: yes
 
