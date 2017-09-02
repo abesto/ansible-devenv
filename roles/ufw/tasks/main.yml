@@ -1,0 +1,22 @@
+- name: Enable UFW
+  become: true
+  ufw:
+    state: enabled
+
+- name: Enable UFW logging (level=low)
+  become: true
+  ufw:
+    logging: low
+
+- name: Disable incoming traffic on UFW
+  become: true
+  ufw:
+    rule: deny
+    direction: in
+    log: yes
+
+- name: Enable outgoing traffic on UFW
+  become: true
+  ufw:
+    rule: allow
+    direction: out

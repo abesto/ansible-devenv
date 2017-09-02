@@ -9,6 +9,7 @@
     - monitoring
     - audio
     - network
+    - ufw
     # Terminal env
     - bashrc
     - fish
