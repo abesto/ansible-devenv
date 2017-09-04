@@ -35,6 +35,7 @@
     - ruby
     - java
     - scala
+    - golang
     - docker
     - easyssh
     - terraform

@@ -1,0 +1,20 @@
+- name: Fetch Gopher PPA signing key
+  become: true
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: C73998DC9DFEA6DCF1241057308C15A29AD198E9
+
+- name: Add Gopher PPA
+  become: true
+  apt_repository:
+    repo: ppa:gophers/archive
+
+- name: Install Golang {{ golang.version }}
+  become: true
+  apt:
+    name: golang-{{ golang.version }}
+
+- name: Install gocode
+  become: true
+  apt:
+    name: gocode

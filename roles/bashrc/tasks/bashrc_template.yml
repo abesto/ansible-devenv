@@ -1,0 +1,4 @@
+- name: Register {{ name }} (templated) as .bashrc.d script with priority {{ priority }}
+  template:
+    src: "{{ src }}"
+    dest: ~/.bashrc.d/{{ priority }}-{{name}}
