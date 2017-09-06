@@ -32,3 +32,12 @@
     - libxml2-dev
     - libxslt-dev
     - swig
+
+- name: Install Python code quality tools
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - pyflakes
+    - pylint
+    - pep8
