@@ -23,7 +23,7 @@
   with_items:
     - z
     - rvm
-    - metro
+    - omf/theme-bobthefish
     - pyenv
 
 - name: Install fish customizations
