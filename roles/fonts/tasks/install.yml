@@ -1,6 +1,6 @@
-- name: Create ~/.local/share/fonts/adobe-source-code-pro
+- name: Create ~/.local/share/fonts/{{ dst }}
   file:
-    dest: ~/.local/share/fonts/adobe-source-code-pro
+    dest: ~/.local/share/fonts/{{ dst }}
     state: directory
     recurse: true
 
@@ -8,23 +8,23 @@
   command: mktemp -d
   register: tmp
 
-- name: Extract Adobe Source Code Pro
+- name: Extract {{ name }}
   unarchive:
-    src: ~/.ansible/adobe-source-code-pro.tar.gz
+    src: ~/.ansible/{{ src }}
     dest: "{{ tmp.stdout }}"
     remote_src: true
-  
-- name: Find OTF font files of Adobe Source Code Pro
+
+- name: Find font files of {{ name }}
   find:
     paths: "{{ tmp.stdout }}"
-    patterns: "*.otf"
+    patterns: "*.otf,*.ttf"
     recurse: true
   register: fontfiles
 
-- name: Copy OTF font files of Adobe Source Code Pro
+- name: Copy font files of {{ name }}
   copy:
     src: "{{ item.path }}"
-    dest: ~/.local/share/fonts/adobe-source-code-pro
+    dest: ~/.local/share/fonts/{{ dst }}
     remote_src: true
   with_items: "{{ fontfiles.files }}"
 

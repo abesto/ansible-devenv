@@ -1,4 +1,4 @@
 dependencies:
   - { role: dotfiles }
-  - { role: adobe_source_code_pro }
+  - { role: fonts }
   - { role: xprofile }
