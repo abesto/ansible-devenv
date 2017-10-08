@@ -1,0 +1,35 @@
+- name: Check if exa is installed and up to date
+  shell: exa --version
+  register: exa_version
+  ignore_errors: yes
+
+- when: exa_version.rc != 0 or exa_version.stdout != "exa " + exa.version
+  block:
+  - name: Download exa {{ exa.version }}
+    get_url:
+      url: https://github.com/ogham/exa/releases/download/v{{ exa.version }}/exa-linux-x86_64-{{ exa.version }}.zip
+      dest: ~/.ansible/exa-{{ exa.version }}.zip
+    register: exa_download
+
+  - name: Create temp dir
+    command: mktemp -d
+    register: tmp
+
+  - name: Extract exa {{ exa.version }}
+    unarchive:
+      src: ~/.ansible/exa-{{ exa.version }}.zip
+      dest: "{{ tmp.stdout }}"
+      remote_src: true
+
+  - name: Move binary into place
+    become: true
+    copy:
+      src: "{{ tmp.stdout }}/exa-linux-x86_64"
+      dest: /usr/local/bin/exa
+      remote_src: true
+
+  - name: Make binary executable
+    become: true
+    file:
+      path: /usr/local/bin/exa
+      mode: "u=xrw,g=xr,o=xr"

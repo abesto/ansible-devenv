@@ -16,7 +16,9 @@
     - keychain
     - tmux
     - ssh
+    - exa
     # GUI env
+    - fonts
     - xmonad
     - urxvt
     - lightdm
