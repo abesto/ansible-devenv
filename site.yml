@@ -5,6 +5,7 @@
     # Basics
     - ssh_keys
     - unix_utils
+    - ripgrep
     - git
     - monitoring
     - audio

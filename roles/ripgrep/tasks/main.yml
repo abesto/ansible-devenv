@@ -1,0 +1,9 @@
+- name: Add ripgrep PPA
+  become: true
+  apt_repository:
+    repo: ppa:x4121/ripgrep
+
+- name: Install ripgrep
+  become: true
+  apt:
+    name: ripgrep
