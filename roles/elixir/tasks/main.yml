@@ -1,4 +1,4 @@
 - name: Install Elixir
   become: true
-  apt:
+  pacman:
     name: elixir

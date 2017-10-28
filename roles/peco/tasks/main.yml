@@ -1,10 +1,4 @@
-- name: Download peco
-  get_url:
-    url: https://github.com/peco/peco/releases/download/{{ peco.version }}/peco_linux_amd64.tar.gz
-    dest: ~/.ansible/peco.tar.gz
-    checksum: "{{ peco.checksum }}"
-  register: peco_download
-
 - name: Install peco
-  include: install.yml
-  when: peco_download.changed
+  aur:
+    name: peco
+    user: "{{ ansible_user_id }}"

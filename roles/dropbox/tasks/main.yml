@@ -1,6 +1,6 @@
 - name: Install python-gpgme to verify signatures for Dropbox installation
   become: true
-  apt:
+  pacman:
     package: python-gpgme
 
 - name: Check if Dropbox is installed and up to date
@@ -11,8 +11,8 @@
 - name: Install Dropbox {{ dropbox.version }}
   when: dropbox_installed.rc != 0
   become: true
-  apt:
-    deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_{{ dropbox.version }}_amd64.deb
+  pacman:
+    name: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_{{ dropbox.version }}_amd64.deb
 
 - name: Auto-start Dropbox from .xprofile.d
   include: roles/xprofile/tasks/xprofile.yml name=dropbox src=dropbox priority=30

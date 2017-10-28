@@ -1,6 +1,6 @@
 - name: Install Docker pre-install dependencies
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
     install_recommends: false
   with_items:
@@ -24,7 +24,7 @@
 
 - name: Install Docker
   become: true
-  apt:
+  pacman:
     name: docker-engine
 
 - name: Create docker group

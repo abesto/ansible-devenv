@@ -18,7 +18,7 @@
 
 - name: Install dependencies for building Pythons via pyenv
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - libbz2-dev
@@ -26,7 +26,7 @@
 
 - name: Install dependencies commonly used by Python modules
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - libxml2-dev
@@ -35,7 +35,7 @@
 
 - name: Install Python code quality tools
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - pyflakes

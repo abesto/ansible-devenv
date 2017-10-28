@@ -11,5 +11,5 @@
         dest: /tmp/gitter.deb
     - name: Install Gitter {{ gitter.version }}
       become: true
-      apt:
-        deb: /tmp/gitter.deb
+      pacman:
+        name: /tmp/gitter.deb

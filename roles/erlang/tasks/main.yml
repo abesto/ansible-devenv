@@ -10,5 +10,5 @@
 
 - name: Install Erlang
   become: true
-  apt:
+  pacman:
     name: esl-erlang

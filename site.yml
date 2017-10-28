@@ -5,7 +5,6 @@
     # Basics
     - ssh_keys
     - unix_utils
-    - ripgrep
     - git
     - monitoring
     - audio
@@ -20,12 +19,12 @@
     - exa
     # GUI env
     - fonts
-    - xmonad
-    - urxvt
     - lightdm
+    - urxvt
     - dunst
     - xcompose
     - autocutsel
+    - xmonad
     # IDE
     - vim
     - emacs

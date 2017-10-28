@@ -1,11 +1,6 @@
-- name: Set up fish shell PPA
-  become: true
-  apt_repository:
-    repo: ppa:fish-shell/release-2
-
 - name: Install fish shell and friends
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - curl
@@ -14,9 +9,9 @@
     - most
 
 - name: Install fisher
-  command: curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-  args:
-    creates: ~/.config/fish/functions/fisher.fish
+  aur:
+    name: fisherman
+    user: "{{ ansible_user_id }}"
 
 - name: Install fisher modules
   include: tasks/fisher_package.yml name={{ item }}

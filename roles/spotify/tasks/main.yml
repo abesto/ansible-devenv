@@ -12,5 +12,5 @@
 
 - name: Install Spotify
   become: true
-  apt:
+  pacman:
     name: spotify-client

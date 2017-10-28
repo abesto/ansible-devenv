@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -euo pipefail
-set +u; . virtualenv/bin/activate; set -u  # remove once lastpass lookup plugin is released
 
 site="$1"; shift
 if [ $# -gt 0 ]; then

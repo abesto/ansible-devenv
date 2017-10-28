@@ -1,14 +1,15 @@
 - name: Install common tools
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
-    - silversearcher-ag
+    - the_silver_searcher
+    - ripgrep
     - unzip
     - wget
     - curl
     - jq
     - tree
-    - pcregrep
+    - pcre
     - net-tools
     - whois

@@ -1,6 +1,6 @@
 - name: Install tmux
   become: true
-  apt:
+  pacman:
     name: tmux
 
 - name: Create ~/.tmux/plugins
@@ -21,13 +21,7 @@
 - name: Install tmux plugins
   shell: TMUX_PLUGIN_MANAGER_PATH=~/.tmux/plugins ~/.tmux/plugins/tpm/bin/install_plugins
 
-- name: Check if tmux-cssh is installed and up to date
-  shell: 'apt-cache policy tmux-cssh | grep "Installed: 1.0.6-0"'
-  register: tmux_cssh_installed
-  ignore_errors: true
-
 - name: Install tmux-cssh
-  when: tmux_cssh_installed.rc != 0
-  become: true
-  apt:
-    deb: https://raw.githubusercontent.com/dennishafemann/tmux-cssh/deb-package/deb-packages/tmux-cssh_1.0.6-0.deb
+  aur:
+    name: tmux-cssh
+    user: "{{ ansible_user_id }}"

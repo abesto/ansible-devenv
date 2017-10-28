@@ -11,10 +11,10 @@
 
 - name: Install Golang {{ golang.version }}
   become: true
-  apt:
+  pacman:
     name: golang-{{ golang.version }}
 
 - name: Install gocode
   become: true
-  apt:
+  pacman:
     name: gocode

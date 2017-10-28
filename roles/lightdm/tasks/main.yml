@@ -1,4 +1,13 @@
-- name: Install LightDM
+- name: Install LightDM and friends
   become: true
-  apt:
-    name: lightdm
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - xorg-server
+    - xorg-apps
+    - lightdm
+
+- name: Install LightDM mini greeter
+  aur:
+    name: lightdm-mini-greeter
+    user: "{{ ansible_user_id }}"

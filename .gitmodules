@@ -1,0 +1,3 @@
+[submodule "library/external-modules/ansible-aur"]
+	path = library/external-modules/ansible-aur
+	url = git@github.com:pigmonkey/ansible-aur.git

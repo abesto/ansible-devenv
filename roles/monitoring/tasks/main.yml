@@ -1,6 +1,6 @@
 - name: Install diagnostic tools
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - htop
@@ -8,5 +8,12 @@
     - iotop
     - nethogs
     - ngrep
-    - wireshark
+    - wireshark-gtk
     - acpi
+
+- name: Add {{ ansible_user_id }} to wireshark group
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    append: yes
+    groups: wireshark

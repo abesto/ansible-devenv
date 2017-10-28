@@ -3,16 +3,10 @@
 
 - name: Install git-so-fancy
   become: true
-  npm:
+  pacman:
     name: diff-so-fancy
-    global: true
-
-- name: Set up PPA for hub GitHub client
-  become: true
-  apt_repository:
-    repo: ppa:cpick/hub
 
 - name: Install hub GitHub client
   become: true
-  apt:
+  pacman:
     name: hub

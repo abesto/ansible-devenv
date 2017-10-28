@@ -11,7 +11,7 @@
 
 - name: Install sbt
   become: true
-  apt:
+  pacman:
     name: sbt
 
 - name: Download Scalastyle

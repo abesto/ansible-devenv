@@ -1,6 +1,6 @@
 - name: Install shell development tools
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - shellcheck

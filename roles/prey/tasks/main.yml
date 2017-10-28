@@ -10,5 +10,5 @@
       command: wget --quiet --continue --output-document=/tmp/prey_{{ prey.version }}.deb https://downloads.preyproject.com/prey-client-releases/node-client/{{ prey.version }}/prey_{{ prey.version }}_amd64.deb
     - name: Install prey {{ prey.version }}
       become: true
-      apt:
-        deb: /tmp/prey_{{ prey.version }}.deb
+      pacman:
+        name: /tmp/prey_{{ prey.version }}.deb

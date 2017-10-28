@@ -1,36 +1,24 @@
-- name: Install volume control
+- name: Install PulseAudio and volume control
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
-    - pasystray
-    - paman
+    - alsa-utils
+    - pulseaudio
     - paprefs
     - pavucontrol
+    - pulseaudio-zeroconf
+
+- name: Install volume control components from AUR
+  with_items:
+    - paman
+    - pasystray-gtk3-standalone
     - pavumeter
-    - pulseaudio-module-zeroconf
     - pnmixer
+    - pulseaudio-ctl
+  aur:
+    name: "{{ item }}"
+    user: "{{ ansible_user_id }}"
 
 - name: Start volume control (paman) in xprofile
   include: roles/xprofile/tasks/xprofile.yml name=pnmixer src=pnmixer priority=20
-
-- name: Check if pulseaudio-ctl is installed and up to date
-  shell: 'pulseaudio-ctl | head -n1 | grep -F "pulseaudio-ctl v{{ pulseaudio_ctl.version }}"'
-  register: pulseaudio_ctl_installed
-  ignore_errors: true
-
-- when: pulseaudio_ctl_installed.rc != 0
-  block:
-    - name: Download pulseaudio-ctl {{ pulseaudio_ctl.version }}
-      get_url:
-        url: https://github.com/graysky2/pulseaudio-ctl/archive/v{{ pulseaudio_ctl.version }}.tar.gz
-        dest: /tmp/pulseaudio-ctl.tar.gz
-    - name: Extract pulseaudio-ctl {{ pulseaudio_ctl.version }}
-      unarchive:
-        src: /tmp/pulseaudio-ctl.tar.gz
-        dest: /tmp/
-    - name: Install pulseaudio_ctl {{ pulseaudio_ctl.version }}
-      become: true
-      make:
-        chdir: /tmp/pulseaudio-ctl-{{ pulseaudio_ctl.version }}
-        target: install

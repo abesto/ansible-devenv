@@ -1,2 +1,9 @@
-- include: adobe_source_code_pro.yml
-- include: nerd_fonts.yml
+- name: Install Nerd Fonts
+  aur:
+    name: nerd-fonts-complete
+    user: "{{ ansible_user_id }}"
+
+- name: Install Adobe Source Code Pro fonts
+  become: true
+  pacman:
+    name: adobe-source-code-pro-fonts

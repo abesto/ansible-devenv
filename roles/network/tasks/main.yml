@@ -1,10 +1,7 @@
-- name: Install NetworkManager
+- name: Install wicd
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
-    - network-manager
-    - network-manager-gnome  # applet
-
-- name: Start NetworkManager applet (nm-applet) in xprofile
-  include: roles/xprofile/tasks/xprofile.yml name=nm-applet src=nm-applet priority=20
+    - wicd
+    - wicd-gtk

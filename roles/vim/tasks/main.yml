@@ -1,6 +1,6 @@
 - name: Install vim
   become: true
-  apt:
+  pacman:
     name: vim
 
 - name: Symlink .vimrc

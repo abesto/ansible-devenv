@@ -1,33 +1,17 @@
 - name: Install XMonad and friends
   become: true
-  apt: name={{ item }} state=latest
+  pacman:
+    name: "{{ item }}"
   with_items:
     - xmonad
-    - libghc-xmonad-contrib-dev
+    - xmonad-contrib
     - dmenu
     - xmobar
     - stalonetray
     - scrot
-    - cabal-install
     - gpicview
-    - xbacklight
-
-- name: Install yeganesh with cabal
-  shell: cabal update; cabal install yeganesh
-  args:
-    creates: ~/.cabal/bin/yeganesh
-
-# If this repo ever decides to include a Haskell devenv, this should move there
-- name: Add cabal bin dir to path
-  include: roles/bashrc/tasks/bashrc.yml name=cabal-bin-path src=files/cabal-bin-path.sh priority=20
-
-- name: Set XMonad as default LightDM session
-  become: true
-  copy:
-    src: files/50-xmonad.conf
-    dest: /etc/lightdm/lightdm.conf.d/50-xmonad.conf
-  notify:
-    - restart lightdm
+    - xorg-xbacklight
+    - dmenu
 
 - file:
     path: ~/.config/xmobar

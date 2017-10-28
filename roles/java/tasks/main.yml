@@ -9,7 +9,7 @@
 
 - name: Install Java, Gradle, and Maven
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - oracle-java8-installer

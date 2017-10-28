@@ -6,5 +6,5 @@
 
 - name: Install Zeal offline documentation
   become: true
-  apt:
+  pacman:
     name: zeal

@@ -1,6 +1,6 @@
 - name: Install dunst build dependencies
   become: true
-  apt:
+  pacman:
     package: "{{ item }}"
   with_items:
     - libdbus-1-dev

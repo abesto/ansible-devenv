@@ -1,6 +1,6 @@
 - name: Install Emacs
   become: true
-  apt:
+  pacman:
     name: emacs
 
 - name: Symlink .spacemacs

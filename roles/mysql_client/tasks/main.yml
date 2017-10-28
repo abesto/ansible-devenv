@@ -1,6 +1,6 @@
 - name: Install mysql-client and libmysqlclient-dev
   become: true
-  apt:
+  pacman:
     package: "{{ item }}"
   with_items:
     - mysql-client

@@ -1,6 +1,6 @@
 - name: Install autocutsel
   become: true
-  apt:
+  pacman:
     package: autocutsel
 
 - name: Start autocutsel from xprofile

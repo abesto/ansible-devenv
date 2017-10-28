@@ -1,2 +1,0 @@
-- name: install peco
-  include: tasks/install.yml

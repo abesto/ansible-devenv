@@ -13,5 +13,5 @@
 
     - name: Install keybase {{ keybase.version }}
       become: true
-      apt:
-        deb: https://prerelease.keybase.io/keybase_amd64.deb
+      pacman:
+        name: https://prerelease.keybase.io/keybase_amd64.deb

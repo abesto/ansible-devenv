@@ -1,9 +1,0 @@
-- name: Download Nerd Font {{ font }}
-  get_url:
-    url: https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ nerd_fonts.version }}/{{ font }}.zip
-    dest: ~/.ansible/NerdFonts-{{ font }}-{{ nerd_fonts.version }}.zip
-  register: download
-
-- name: Install Nerd Fonts {{ font }}
-  when: download.changed
-  include: install.yml name={{ font }} src=NerdFonts-{{ font }}-{{ nerd_fonts.version }}.zip dst={{ font }}

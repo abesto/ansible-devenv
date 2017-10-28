@@ -9,7 +9,7 @@
 
 - name: Install power / heat management utilities
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - powertop
@@ -31,7 +31,7 @@
 
 - name: Install display drivers
   become: true
-  apt:
+  pacman:
     package: "{{ item }}"
   with_items:
     - nvidia-384
@@ -59,7 +59,7 @@
 
 - name: Install Bluetooth utilities
   become: true
-  apt:
+  pacman:
     name: "{{ item }}"
   with_items:
     - bluez

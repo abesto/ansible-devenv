@@ -1,4 +1,4 @@
 - name: Install urxvt
   become: true
-  apt:
-    name: rxvt-unicode-256color
+  pacman:
+    name: rxvt-unicode

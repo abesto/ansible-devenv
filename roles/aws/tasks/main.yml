@@ -1,6 +1,6 @@
 - name: Install AWS CLI
   become: true
-  apt:
+  pacman:
     package: awscli
 
 - name: Create ~/.aws

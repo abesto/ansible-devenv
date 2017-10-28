@@ -1,6 +1,6 @@
 - name: Install keychain
   become: true
-  apt:
+  pacman:
     name: keychain
 
 - name: Initialize keychain on bash startup

@@ -12,7 +12,7 @@
 
 - name: Install Wavebox
   become: true
-  apt:
+  pacman:
     name: wavebox
 
 - name: Symlink Wavebox into /usr/local/bin

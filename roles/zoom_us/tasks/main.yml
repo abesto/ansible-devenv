@@ -12,5 +12,5 @@
 - name: Install zoom.us
   become: true
   when: zoom_installed.rc != 0
-  apt:
-    deb: https://zoom.us/client/latest/zoom_amd64.deb
+  pacman:
+    name: https://zoom.us/client/latest/zoom_amd64.deb
