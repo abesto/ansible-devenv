@@ -12,3 +12,4 @@
     - pcregrep
     - net-tools
     - whois
+    - httpie
