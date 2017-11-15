@@ -8,8 +8,8 @@
   apt_repository:
     repo: "{{ item }}"
   with_items:
-    - "deb https://deb.nodesource.com/node_7.x {{ ansible_distribution_release }} main"
-    - "deb-src https://deb.nodesource.com/node_7.x {{ ansible_distribution_release }} main"
+    - "deb https://deb.nodesource.com/node_8.x {{ ansible_distribution_release }} main"
+    - "deb-src https://deb.nodesource.com/node_8.x {{ ansible_distribution_release }} main"
 
 - name: Install nodejs and friends
   become: true
