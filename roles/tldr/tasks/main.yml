@@ -1,0 +1,5 @@
+- name: Install tldr
+  become: true
+  npm:
+    name: tldr
+    global: true

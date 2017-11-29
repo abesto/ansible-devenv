@@ -54,6 +54,7 @@
     - keybase
     - lastpass
     - borgbackup
+    - tldr
 
 - hosts: prezi_dell
   roles:
