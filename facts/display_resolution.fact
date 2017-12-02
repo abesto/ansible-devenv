@@ -8,6 +8,7 @@ echo '{'
 echo -n '"name": "'
 case "${width}x${height}" in
     1920x1080) echo -n fhd;;
+    2560x1440) echo -n wqhd;;
     3840x2160) echo -n 4k;;
     *) echo -n "${width}_${height}";;
 esac
