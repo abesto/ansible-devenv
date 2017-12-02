@@ -30,3 +30,14 @@
   become: true
   apt:
     package: yarn
+
+- name: Create ~/.npm-global
+  file:
+    path: ~/.npm-global
+    state: directory
+
+- name: Configure NPM prefix
+  command: npm config set prefix '~/.npm-global'
+
+- name: Add ~/.npm-global to PATH
+  include: roles/bashrc/tasks/bashrc.yml name=npm-global-path src=files/npm-global-path.sh priority=20

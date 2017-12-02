@@ -1,5 +1,7 @@
 - name: Install tldr
-  become: true
   npm:
     name: tldr
     global: true
+
+- name: Symlink .tldrrc
+  include: roles/dotfiles/tasks/symlink.yml src=.tldrrc
