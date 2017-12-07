@@ -55,6 +55,7 @@
     - lastpass
     - borgbackup
     - tldr
+    - glances
 
 - hosts: prezi_dell
   roles:

@@ -1,0 +1,26 @@
+- name: Install glances
+  pip:
+    name: glances
+    virtualenv: "{{ ansible_env.HOME }}/glances"
+    version: "{{ glances.version }}"
+    virtualenv_python: python3
+
+- name: Install glances optional dependencies
+  pip:
+    name: "{{ item }}"
+    virtualenv: "{{ ansible_env.HOME }}/glances"
+    virtualenv_python: python3
+    state: latest
+  with_items:
+    - docker
+    - hddtemp
+    - matplotlib
+    - netifaces
+    - nvidia-ml-py3
+    - py-cpuinfo
+    - pysnmp
+    - pystache
+    - requests
+    - scandir
+    - wifi
+    - zeroconf
