@@ -1,0 +1,8 @@
+- name: Install spellcheckers
+  become: true
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - aspell
+    - aspell-hu
+    - aspell-en

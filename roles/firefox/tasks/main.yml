@@ -1,0 +1,4 @@
+- name: Install Firefox
+  become: true
+  pacman:
+    name: firefox

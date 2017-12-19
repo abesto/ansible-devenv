@@ -1,16 +1,4 @@
-- name: Check if terraform is installed and up to date
-  shell: terraform version | head -n1 | grep {{ terraform.version }}
-  ignore_errors: yes
-  register: terraform_installed
-
-- when: terraform_installed.rc != 0
-  block:
-    - name: Download terraform {{ terraform.version }}
-      get_url:
-        url: https://releases.hashicorp.com/terraform/{{ terraform.version }}/terraform_{{ terraform.version }}_linux_amd64.zip
-        dest: /tmp/terraform_{{ terraform.version }}_linux_amd64.zip
-    - name: Extract terraform into /usr/local/bin/
-      become: true
-      unarchive:
-        src: /tmp/terraform_{{ terraform.version }}_linux_amd64.zip
-        dest: /usr/local/bin/
+- name: Install terraform
+  become: true
+  pacman:
+    name: terraform

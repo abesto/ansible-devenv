@@ -11,3 +11,15 @@
   aur:
     name: lightdm-mini-greeter
     user: "{{ ansible_user_id }}"
+
+- name: Install LightDM configuration
+  become: true
+  copy:
+    src: roles/lightdm/files/lightdm.conf
+    dest: /etc/lightdm/lightdm.conf
+
+- name: Enable LightDM in SystemD
+  become: true
+  systemd:
+    enabled: true
+    name: lightdm

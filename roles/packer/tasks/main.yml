@@ -1,16 +1,4 @@
-- name: Check if packer is installed and up to date
-  shell: packer version | head -n1 | grep {{ packer.version }}
-  ignore_errors: yes
-  register: packer_installed
-
-- when: packer_installed.rc != 0
-  block:
-    - name: Download packer {{ packer.version }}
-      get_url:
-        url: https://releases.hashicorp.com/packer/{{ packer.version }}/packer_{{ packer.version }}_linux_amd64.zip
-        dest: /tmp/packer_{{ packer.version }}_linux_amd64.zip
-    - name: Extract packer into /usr/local/bin/
-      become: true
-      unarchive:
-        src: /tmp/packer_{{ packer.version }}_linux_amd64.zip
-        dest: /usr/local/bin/
+- name: Install packer
+  become: true
+  pacman:
+    name: packer-io

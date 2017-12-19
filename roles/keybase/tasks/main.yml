@@ -1,17 +1,4 @@
-- name: Check if keybase is installed
-  shell: 'apt-cache policy keybase | grep "Installed:"'
-  register: keybase_installed
-  ignore_errors: yes
-
-- when: keybase_installed.rc != 0
-  block:
-    - name: Add keybase apt signing key
-      become: true
-      apt_key:
-        url: https://keybase.io/docs/server_security/code_signing_key.asc
-        id: 222B85B0F90BE2D24CFEB93F47484E50656D16C7
-
-    - name: Install keybase {{ keybase.version }}
-      become: true
-      pacman:
-        name: https://prerelease.keybase.io/keybase_amd64.deb
+- name: Install keybase
+  become: true
+  pacman:
+    name: keybase

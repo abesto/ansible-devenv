@@ -24,4 +24,7 @@ git remote add origin git@github.com:abesto/ansible-devenv.git
 git fetch
 git branch -u origin/master
 
+echo 'Importing Xyne AUR GPG key to install Bauerbill'
+gpg --recv-keys 1D1F0DC78F173680
+
 echo 'Bootstrap done!'

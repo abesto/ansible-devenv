@@ -1,32 +1,12 @@
-- name: Accept signing key of SBT apt repository
-  become: true
-  apt_key:
-    keyserver: hkp://keyserver.ubuntu.com:80
-    id: 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-
-- name: Set up SBT apt repository
-  become: true
-  apt_repository:
-    repo: deb https://dl.bintray.com/sbt/debian /
-
-- name: Install sbt
+- name: Install SBT
   become: true
   pacman:
     name: sbt
 
-- name: Download Scalastyle
-  become: true
-  get_url:
-    url: https://oss.sonatype.org/content/repositories/releases/org/scalastyle/scalastyle_2.11/{{ scala.scalastyle.version }}/scalastyle_2.11-{{ scala.scalastyle.version }}-batch.jar
-    dest: /usr/local/scalastyle.jar
-    checksum: "{{ scala.scalastyle.checksum }}"
-
-- name: Scalastyle executable
-  become: true
-  copy:
-    dest: /usr/local/bin/scalastyle
-    content: java -jar /usr/local/scalastyle.jar "$@"
-    mode: 0755
+- name: Install Scalastyle
+  aur:
+    name: scalastyle
+    user: "{{ ansible_user_id }}"
 
 - name: Create ~/.sbt/0.13/plugins
   file:

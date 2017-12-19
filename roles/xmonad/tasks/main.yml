@@ -11,7 +11,13 @@
     - scrot
     - gpicview
     - xorg-xbacklight
-    - dmenu
+    - xscreensaver
+    - xclip
+
+- name: Install Yegonesh
+  aur:
+    name: yegonesh
+    user: "{{ ansible_user_id }}"
 
 - file:
     path: ~/.config/xmobar
@@ -50,5 +56,5 @@
     enabled: true
     daemon_reload: true
 
-- name: Start gnome-screensaver on login
-  include: roles/xprofile/tasks/xprofile.yml name=gnome-screensaver src=gnome-screensaver priority=20
+- name: Start xscreensaver on login
+  include: roles/xprofile/tasks/xprofile.yml name=xscreensaver src=xscreensaver priority=20

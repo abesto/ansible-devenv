@@ -13,3 +13,4 @@
     - pcre
     - net-tools
     - whois
+    - hwinfo

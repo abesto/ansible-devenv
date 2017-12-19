@@ -1,9 +1,3 @@
-- name: Set up Zeal PPA
-  become: true
-  apt_repository:
-    repo: ppa:zeal-developers/ppa
-    codename: yakkety  # Not out yet for Zesty
-
 - name: Install Zeal offline documentation
   become: true
   pacman:

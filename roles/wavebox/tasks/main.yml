@@ -1,23 +1,4 @@
-- name: Fetch Wavebox repo signing key
-  become: true
-  apt_key:
-    url: https://wavebox.io/dl/client/repo/archive.key
-    state: present
-
-- name: Add Wavebox apt repo
-  become: true
-  apt_repository:
-    repo: deb https://wavebox.io/dl/client/repo/ x86_64/
-    state: present
-
 - name: Install Wavebox
-  become: true
-  pacman:
-    name: wavebox
-
-- name: Symlink Wavebox into /usr/local/bin
-  become: true
-  file:
-    src: /opt/wavebox/Wavebox
-    dest: /usr/local/bin/wavebox
-    state: link
+  aur:
+    name: wavebox-bin
+    user: "{{ ansible_user_id }}"

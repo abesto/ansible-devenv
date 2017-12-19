@@ -1,19 +1,13 @@
-- name: Add webupd8team PPA
-  become: true
-  apt_repository:
-    repo: ppa:webupd8team/java
-
-- name: I accept the Oracle license
-  become: true
-  shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+- name: Install Oracle JDK 8
+  aur:
+    name: jdk8
+    user: "{{ ansible_user_id }}"
 
 - name: Install Java, Gradle, and Maven
   become: true
   pacman:
     name: "{{ item }}"
   with_items:
-    - oracle-java8-installer
-    - oracle-java8-set-default
     - maven
     - gradle
 

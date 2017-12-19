@@ -1,20 +1,12 @@
-- name: Fetch Gopher PPA signing key
-  become: true
-  apt_key:
-    keyserver: hkp://keyserver.ubuntu.com:80
-    id: C73998DC9DFEA6DCF1241057308C15A29AD198E9
-
-- name: Add Gopher PPA
-  become: true
-  apt_repository:
-    repo: ppa:gophers/archive
-
-- name: Install Golang {{ golang.version }}
+- name: Install Golang and friends
   become: true
   pacman:
-    name: golang-{{ golang.version }}
+    name: "{{ item }}"
+  with_items:
+    - go
+    - go-tools
 
 - name: Install gocode
-  become: true
-  pacman:
-    name: gocode
+  aur:
+    name: gocode-git
+    user: "{{ ansible_user_id }}"

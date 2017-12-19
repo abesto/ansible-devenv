@@ -1,31 +1,14 @@
-- name: Install Docker pre-install dependencies
-  become: true
-  pacman:
-    name: "{{ item }}"
-    install_recommends: false
-  with_items:
-    - linux-image-extra-{{ ansible_kernel }}
-    - linux-image-extra-virtual
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
-
-- name: Add Docker APT repo GPG key
-  become: true
-  apt_key:
-    url: https://apt.dockerproject.org/gpg
-    id: 58118E89F3A912897C070ADBF76221572C52609D
-
-- name: Add Docker APT repo
-  become: true
-  apt_repository:
-    repo: deb https://apt.dockerproject.org/repo/ ubuntu-{{ ansible_distribution_release }} main
-
 - name: Install Docker
   become: true
   pacman:
-    name: docker-engine
+    name: docker
+
+- name: Start, enable Docker service
+  become: true
+  systemd:
+    name: docker
+    enabled: true
+    state: started
 
 - name: Create docker group
   group:
@@ -39,14 +22,6 @@
     append: true
 
 - name: Install docker-compose
-  pip:
-    virtualenv: ~/docker-compose
-    virtualenv_python: python3
-    name: docker-compose
-
-- name: Symlink docker-compose
   become: true
-  file:
-    src: "{{ ansible_env.HOME }}/docker-compose/bin/docker-compose"
-    dest: /usr/local/bin/docker-compose
-    state: link
+  pacman:
+    name: docker-compose

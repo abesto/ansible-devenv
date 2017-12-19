@@ -1,18 +1,10 @@
-- name: Install python-gpgme to verify signatures for Dropbox installation
-  become: true
-  pacman:
-    package: python-gpgme
-
-- name: Check if Dropbox is installed and up to date
-  shell: 'apt-cache policy dropbox | grep "Installed: {{ dropbox.version }}"'
-  register: dropbox_installed
-  ignore_errors: yes
-
-- name: Install Dropbox {{ dropbox.version }}
-  when: dropbox_installed.rc != 0
-  become: true
-  pacman:
-    name: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_{{ dropbox.version }}_amd64.deb
+- name: Install Dropbox and friends
+  aur:
+    name: "{{ item }}"
+    user: "{{ ansible_user_id }}"
+  with_items:
+    - dropbox
+    - dropbox-cli
 
 - name: Auto-start Dropbox from .xprofile.d
   include: roles/xprofile/tasks/xprofile.yml name=dropbox src=dropbox priority=30

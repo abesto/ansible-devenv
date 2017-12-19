@@ -1,7 +1,0 @@
-- name: Install mysql-client and libmysqlclient-dev
-  become: true
-  pacman:
-    package: "{{ item }}"
-  with_items:
-    - mysql-client
-    - libmysqlclient-dev

@@ -1,4 +1,2 @@
-- name: Install Yubico Authenticator desktop
-  become: true
-  pacman:
-    package: yubioath-desktop
+# Yubi on Arch seems hard, don't currently need it.
+# https://wiki.archlinux.org/index.php/Yubikey

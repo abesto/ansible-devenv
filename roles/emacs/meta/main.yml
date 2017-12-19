@@ -1,2 +1,3 @@
 dependencies:
   - { role: dotfiles }
+  - { role: python }  # for pip, to install jedi

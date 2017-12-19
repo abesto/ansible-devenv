@@ -5,3 +5,9 @@
   with_items:
     - wicd
     - wicd-gtk
+
+- name: Enable wicd in SystemD
+  become: true
+  systemd:
+    enabled: true
+    name: wicd

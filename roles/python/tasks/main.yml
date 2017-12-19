@@ -1,36 +1,31 @@
-- name: Check if pyenv is installed and up to date
-  shell: 'pyenv --version | grep "{{ pyenv.version }}"'
-  register: pyenv_installed
-  ignore_errors: yes
-
-- name: Install pyenv if needed
-  when: pyenv_installed.rc != 0
-  git:
-    repo: git@github.com:pyenv/pyenv.git
-    dest: ~/.pyenv
-    version: v{{ pyenv.version }}
-
-- name: Install pyenv-virtualenv
-  git:
-    repo: git@github.com:pyenv/pyenv-virtualenv.git
-    dest: ~/.pyenv/plugins/pyenv-virtualenv
-    version: v1.0.0
+- name: Install pyenv and pyenv-virtualenv
+  aur:
+    name: "{{ item }}"
+    user: "{{ ansible_user_id }}"
+  with_items:
+    - pyenv
+    - pyenv-virtualenv
 
 - name: Install dependencies for building Pythons via pyenv
   become: true
   pacman:
     name: "{{ item }}"
   with_items:
-    - libbz2-dev
-    - libreadline-dev
+    - bzip2
+    - readline
+
+- name: Install pip
+  become: true
+  pacman:
+    name: python-pip
 
 - name: Install dependencies commonly used by Python modules
   become: true
   pacman:
     name: "{{ item }}"
   with_items:
-    - libxml2-dev
-    - libxslt-dev
+    - libxml2
+    - libxslt
     - swig
 
 - name: Install Python code quality tools
@@ -38,6 +33,5 @@
   pacman:
     name: "{{ item }}"
   with_items:
-    - pyflakes
-    - pylint
-    - pep8
+    - flake8
+    - python-pylint

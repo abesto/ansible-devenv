@@ -1,9 +1,19 @@
+- name: Install fonts from offical repo
+  become: true
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - ttf-bitstream-vera
+    - ttf-croscore
+    - ttf-dejavu
+    - ttf-droid
+    - ttf-inconsolata
+    - ttf-roboto
+    - ttf-freefont
+    - adobe-source-code-pro-fonts
+
+
 - name: Install Nerd Fonts
   aur:
     name: nerd-fonts-complete
     user: "{{ ansible_user_id }}"
-
-- name: Install Adobe Source Code Pro fonts
-  become: true
-  pacman:
-    name: adobe-source-code-pro-fonts

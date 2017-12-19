@@ -10,6 +10,7 @@
     - audio
     - network
     - ufw
+    - aspell
     # Terminal env
     - bashrc
     - fish
@@ -42,9 +43,9 @@
     - easyssh
     - terraform
     - packer
-    - mysql_client
     # User apps
     - chrome
+    - firefox
     - spotify
     - wavebox
     - gitter
@@ -53,6 +54,8 @@
     - keybase
     - lastpass
     - borgbackup
+    # Bauerbill used for system upgrades
+    - bauerbill
 
 - hosts: prezi_dell
   roles:
