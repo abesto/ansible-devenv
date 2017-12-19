@@ -3,15 +3,14 @@
   pacman:
     package: "{{ item }}"
   with_items:
-    - libdbus-1-dev
-    - libx11-dev
-    - libxext-dev
-    - libxft-dev
-    - libxss-dev
-    - libglib2.0-dev
-    - libpango1.0-dev
-    - libgtk2.0-dev
-    - libxdg-basedir-dev
+    - libx11
+    - libxext
+    - libxft
+    - libxss
+    - glib2
+    - pango
+    - gtk2
+    - libxdg-basedir
 
 - name: Check if dunst is at {{ dunst.version }}
   shell: dunst --version | grep {{ dunst.version }}
@@ -28,7 +27,7 @@
       register: dunst_git
 
     - name: Compile dunst at {{ dunst.version }}
-      shell: echo {{ dunst.version }} > VERSION && make clean all && rm VERSION
+      shell: make clean all
       args:
         chdir: ~/dunst
 
