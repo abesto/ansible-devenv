@@ -1,2 +1,7 @@
-# Yubi on Arch seems hard, don't currently need it.
-# https://wiki.archlinux.org/index.php/Yubikey
+- name: Install YubiKey tools
+  become: true
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - yubikey-personalization
+    - yubikey-personalization-gui
