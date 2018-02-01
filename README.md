@@ -34,7 +34,7 @@ keybase pgp export -s | gpg --allow-secret-key-import --import
 ## As VirtualBox guest
 
 ```
-pacman -S virtualbox-guest-modules-arch
+pacman -S virtualbox-guest-modules virtualbox-guest-modules-arch
 systemctl start vboxservice
 systemctl enable vboxservice
 VBoxClient-all
