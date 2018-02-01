@@ -19,7 +19,9 @@ git submodule update
 # SSH agent for initial run (later handled in Xsession)
 eval $(keychain --eval)
 ssh-add
-./apply.sh $SITE  # where a site is the basename of one of the .email files in the repo root
+# a site is the basename of one of the .email files in the repo root
+# update the screen resolution as appropriate; need to hint here because we're not yet in the graphical environment
+env X_WIDTH=2560 X_HEIGHT=1440 ./apply.sh $SITE  
 
 # manually log in to dropbox
 dropbox start -i
