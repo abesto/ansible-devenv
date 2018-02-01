@@ -1,0 +1,4 @@
+- name: Install base-devel so that we can build packages
+  become: true
+  package:
+    name: base-devel

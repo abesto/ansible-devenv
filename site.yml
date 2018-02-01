@@ -3,6 +3,7 @@
     - "!all"
   roles:
     # Basics
+    - aur
     - ssh_keys
     - unix_utils
     - git

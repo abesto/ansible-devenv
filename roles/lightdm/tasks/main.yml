@@ -18,6 +18,12 @@
     src: roles/lightdm/files/lightdm.conf
     dest: /etc/lightdm/lightdm.conf
 
+- name: Install the LightDM mini greeter configuration
+  become: true
+  template:
+    src: roles/lightdm/templates/lightdm-mini-greeter.conf
+    dest: /etc/lightdm/lightdm-mini-greeter.conf
+
 - name: Enable LightDM in SystemD
   become: true
   systemd:
