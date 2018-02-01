@@ -12,6 +12,8 @@ Development environment managed with Ansible – ArchLinux alternative.
 sudo pacman -S git
 git clone https://github.com/abesto/ansible-devenv
 cd ansible-devenv
+git checkout arch
+git submodule update
 ./bootstrap.sh $EMAIL
 
 # SSH agent for initial run (later handled in Xsession)
