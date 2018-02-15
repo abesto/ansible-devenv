@@ -38,13 +38,6 @@
     - xserver-xorg-video-intel
     - nvidia-prime
 
-- name: Tell QT about HiDPI screen
-  become: true
-  copy:
-    dest: /etc/profile.d/qt-hidpi.sh
-    content: export QT_DEVICE_PIXEL_RATIO=2
-    mode: o+x
-
 - name: Enable TearFree on Xorg
   become: true
   copy:
