@@ -44,6 +44,7 @@
     - terraform
     - packer
     - mysql_client
+    - jid
     # User apps
     - chrome
     - spotify
