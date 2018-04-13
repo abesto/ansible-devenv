@@ -1,7 +1,7 @@
 intellij:
   ultimate:
-    version: ideaIU-2017.3.5
-    checksum: sha256:52ac5f588a66b2e622953943384047494d0be326abf4f81ba81d81c8f9c3cfce
+    version: ideaIU-2018.1.1
+    checksum: sha256:259ede8f233bdde5435ac2c800423428a4692e489fe4d764667c90a246ab0629
   community:
     version: ideaIC-2017.2.1
     checksum: sha256:23040da1a0ca9e959b78a34e8b78a77376f5e0aabfdf6c29dd5f5e9980b80ffd
