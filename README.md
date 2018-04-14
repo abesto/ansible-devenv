@@ -9,10 +9,11 @@ Development environment managed with Ansible – ArchLinux alternative.
 
 ```
 # Bootstrap
-sudo pacman -S git
+sudo pacman -S git ssh
 git clone https://github.com/abesto/ansible-devenv
 cd ansible-devenv
 git checkout arch
+git submodule init
 git submodule update
 ./bootstrap.sh $EMAIL
 
