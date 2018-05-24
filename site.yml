@@ -70,6 +70,7 @@
 - hosts: home_desktop
   roles:
     - elixir
+    - nouveau
 
 - hosts: single_role
   roles:
