@@ -11,6 +11,18 @@
     - wireshark-gtk
     - acpi
 
+- name: Install glances and friends
+  become: true
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - glances
+    - hddtemp
+    - python-docker
+    - python-matplotlib
+    - python-netifaces
+    - python-zeroconf
+
 - name: Add {{ ansible_user_id }} to wireshark group
   become: true
   user:
