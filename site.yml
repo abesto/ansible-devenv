@@ -1,4 +1,4 @@
-- hosts: home_desktop, prezi_dell
+- hosts: home_desktop
   gather_subset:
     - "!all"
   roles:
@@ -57,15 +57,6 @@
     - borgbackup
     # Bauerbill used for system upgrades
     - bauerbill
-
-- hosts: prezi_dell
-  roles:
-    - prezi
-    - zoom_us
-    - prey
-    - aws
-  tasks:
-    - include: roles/network/tasks/vpn.yml
 
 - hosts: home_desktop
   roles:
