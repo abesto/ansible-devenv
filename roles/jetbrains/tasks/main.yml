@@ -1,0 +1,4 @@
+- name: Install Jetbrains toolbox
+  aur:
+    name: jetbrains-toolbox
+    user: "{{ ansible_user_id }}"

@@ -1,3 +1,2 @@
-home_desktop	ansible_connection=local  site=home_desktop intellij_flavor=community
-prezi_dell	  ansible_connection=local  site=prezi_dell   intellij_flavor=ultimate
-single_role   ansible_connection=local  intellij_flavor=ultimate
+home_desktop	ansible_connection=local  site=home_desktop
+single_role   ansible_connection=local

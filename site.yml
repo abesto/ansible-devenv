@@ -30,7 +30,7 @@
     # IDE
     - vim
     - emacs
-    - intellij
+    - jetbrains
     - zeal
     # Devenv
     - sh_dev
