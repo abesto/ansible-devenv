@@ -24,9 +24,6 @@ ssh-add
 # update the screen resolution as appropriate; need to hint here because we're not yet in the graphical environment
 env X_WIDTH=2560 X_HEIGHT=1440 ./apply.sh $SITE  
 
-# manually log in to dropbox
-dropbox start -i
-
 # manually log in to keybase, add private key to GPG
 keybase login
 keybase pgp export -s | gpg --allow-secret-key-import --import
