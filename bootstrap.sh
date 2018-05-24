@@ -7,8 +7,8 @@ echo 'Initializing git submodules for third-party libraries'
 git submodule init
 
 echo 'Upgrading system packages, installing bootstrap packages...'
-sudo pacman -Syu
-sudo pacman -S ansible lastpass-cli openssh python3 keychain xorg-xvidtune
+sudo -S pacman -Syu
+sudo -S pacman -S ansible lastpass-cli openssh python3 keychain xorg-xvidtune
 
 echo 'LastPass login...'
 mkdir -p ~/.config ~/.local/share
