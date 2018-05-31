@@ -1,7 +1,0 @@
-- name: Install OSS Nvidia driver and friends
-  become: true
-  pacman:
-    name: "{{ item }}"
-  with_items:
-    - mesa
-    - xf86-video-nouveau

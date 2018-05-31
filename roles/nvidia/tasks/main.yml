@@ -1,0 +1,8 @@
+- name: Install proprietary NVidia driver and friends
+  become: true
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - mesa
+    - nvidia
+    - nvidia-settings

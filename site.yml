@@ -61,7 +61,7 @@
 - hosts: home_desktop
   roles:
     - elixir
-    - nouveau
+    - nvidia
 
 - hosts: single_role
   roles:
