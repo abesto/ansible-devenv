@@ -62,3 +62,6 @@
 
 - name: Start xscreensaver on login
   include: roles/xprofile/tasks/xprofile.yml name=xscreensaver src=xscreensaver priority=20
+
+- name: Set root X cursor to left pointer
+  include: roles/xprofile/tasks/xprofile.yml name=xsetroot-cursor src=xsetroot-cursor priority=20

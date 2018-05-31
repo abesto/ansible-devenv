@@ -22,7 +22,7 @@ eval $(keychain --eval)
 ssh-add
 # a site is the basename of one of the .email files in the repo root
 # update the screen resolution as appropriate; need to hint here because we're not yet in the graphical environment
-env X_WIDTH=2560 X_HEIGHT=1440 ./apply.sh $SITE  
+env X_WIDTH=2560 X_HEIGHT=1440 ./apply.sh $SITE
 
 # manually log in to keybase, add private key to GPG
 keybase login
@@ -41,8 +41,9 @@ echo VBoxClient-all > ~/.xprofile.d/99-vbox-guest
 
 ## System upgrade
 
-Pacman and AUR packages are _not_ upgraded by `ansible` runs. Packages are build by `ansible` in `~/aur`, but are upgraded with `bauerbill`:
+Pacman and AUR packages are _not_ upgraded by `ansible` runs. Packages are build by `ansible` in `~/aur`, but are upgraded with `bauerbill`.
 
 ```
-bb-wrapper -Syu --aur
+sudo bb-wrapper -Syu --aur
+sudo snap refresh
 ```

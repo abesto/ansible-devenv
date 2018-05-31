@@ -1,4 +1,7 @@
-- name: Install Jetbrains toolbox
-  aur:
-    name: jetbrains-toolbox
-    user: "{{ ansible_user_id }}"
+- name: Install IDEA Community edition
+  become: true
+  command: snap install intellij-idea-community --classic
+
+- name: Install Webstorm
+  become: true
+  command: snap install webstorm --classic

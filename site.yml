@@ -12,6 +12,7 @@
     - network
     - ufw
     - aspell
+    - snapd
     # Terminal env
     - bashrc
     - fish
