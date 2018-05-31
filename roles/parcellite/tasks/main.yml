@@ -1,0 +1,10 @@
+- name: Install Parcellite clipboard manager
+  become: true
+  pacman:
+    package: parcellite
+
+- name: Start Parcellite from xprofile
+  include: roles/xprofile/tasks/xprofile.yml name=parcellite priority=20 src=parcellite
+
+- name: Symlink Parcellite config from dotfiles
+  include: roles/dotfiles/tasks/symlink.yml src=.config/parcellite

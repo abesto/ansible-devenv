@@ -1,7 +1,0 @@
-- name: Install autocutsel
-  become: true
-  pacman:
-    package: autocutsel
-
-- name: Start autocutsel from xprofile
-  include: roles/xprofile/tasks/xprofile.yml name=autocutsel priority=20 src=autocutsel
