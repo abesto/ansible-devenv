@@ -27,6 +27,14 @@ env X_WIDTH=2560 X_HEIGHT=1440 ./apply.sh $SITE
 # manually log in to keybase, add private key to GPG
 keybase login
 keybase pgp export -s | gpg --allow-secret-key-import --import
+
+# Install MS fonts, as described in https://wiki.archlinux.org/index.php/Microsoft_fonts
+mkdir /mnt/windows
+mount /dev/sdXX /mnt/windows
+mkdir /usr/share/fonts/WindowsFonts
+cp -r /mnt/windows/Windows/Fonts/ /usr/share/fonts/WindowsFonts
+chmod 755 /usr/share/fonts/WindowsFonts/*
+fc-cache -f
 ```
 
 ## As VirtualBox guest
