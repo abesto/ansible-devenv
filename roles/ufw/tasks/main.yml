@@ -8,13 +8,6 @@
   ufw:
     logging: low
 
-- name: Disable incoming traffic on UFW
-  become: true
-  ufw:
-    rule: deny
-    direction: in
-    log: yes
-
 - name: Enable outgoing traffic on UFW
   become: true
   ufw:
