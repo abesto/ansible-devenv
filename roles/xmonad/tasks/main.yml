@@ -11,9 +11,9 @@
     - scrot
     - gpicview
     - xorg-xbacklight
-    - xscreensaver
     - xclip
     - parcellite
+    - light-locker
 
 - name: Install Yegonesh
   aur:
@@ -38,6 +38,9 @@
 - name: Start stalonetray from .xprofile
   include: roles/xprofile/tasks/xprofile.yml name=stalonetray src=stalonetray priority=20
 
+- name: Start light-locker from .xprofile
+  include: roles/xprofile/tasks/xprofile.yml name=light-locker src=light-locker priority=20
+
 - name: Start parcellite clipboard manager from .xprofile
   include: roles/xprofile/tasks/xprofile.yml name=parcellite src=parcellite priority=20
 
@@ -59,9 +62,6 @@
     name: lock-on-suspend@{{ ansible_user_id }}
     enabled: true
     daemon_reload: true
-
-- name: Start xscreensaver on login
-  include: roles/xprofile/tasks/xprofile.yml name=xscreensaver src=xscreensaver priority=20
 
 - name: Set root X cursor to left pointer
   include: roles/xprofile/tasks/xprofile.yml name=xsetroot-cursor src=xsetroot-cursor priority=20
