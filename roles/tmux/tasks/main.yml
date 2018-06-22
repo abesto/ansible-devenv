@@ -24,4 +24,3 @@
 - name: Install tmux-cssh
   aur:
     name: tmux-cssh
-    user: "{{ ansible_user_id }}"

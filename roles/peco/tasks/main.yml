@@ -1,4 +1,3 @@
 - name: Install peco
   aur:
     name: peco
-    user: "{{ ansible_user_id }}"

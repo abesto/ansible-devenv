@@ -16,4 +16,3 @@
 - name: Install Nerd Fonts
   aur:
     name: nerd-fonts-complete
-    user: "{{ ansible_user_id }}"

@@ -10,7 +10,6 @@
 - name: Install LightDM mini greeter
   aur:
     name: lightdm-mini-greeter
-    user: "{{ ansible_user_id }}"
 
 - name: Install LightDM configuration
   become: true

@@ -1,7 +1,6 @@
 - name: Install pyenv and pyenv-virtualenv
   aur:
     name: "{{ item }}"
-    user: "{{ ansible_user_id }}"
   with_items:
     - pyenv
     - pyenv-virtualenv

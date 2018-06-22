@@ -9,4 +9,3 @@
 - name: Install gocode
   aur:
     name: gocode-git
-    user: "{{ ansible_user_id }}"

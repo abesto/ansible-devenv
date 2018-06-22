@@ -6,7 +6,6 @@
 - name: Install Scalastyle
   aur:
     name: scalastyle
-    user: "{{ ansible_user_id }}"
 
 - name: Create ~/.sbt/0.13/plugins
   file:

@@ -2,3 +2,8 @@
   become: true
   package:
     name: base-devel
+
+- name: Install yay AUR helper
+  aur:
+    name: yay
+    using: makepkg

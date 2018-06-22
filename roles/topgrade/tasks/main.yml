@@ -1,0 +1,14 @@
+- name: Install optional dependencies for topgrade
+  package:
+    name: "{{ item }}"
+  with_items:
+    - fwupd
+    - needrestart
+    - iucode-tool
+
+- name: Install topgrade
+  aur:
+    name: topgrade
+
+- name: Symlink topgrade config from dotfiles
+  include: roles/dotfiles/tasks/symlink.yml src=.config/topgrade.toml

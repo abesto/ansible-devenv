@@ -9,7 +9,6 @@
 - name: Install YubiKey oath desktop client
   aur:
     name: "yubico-yubioath-desktop"
-    user: "{{ ansible_user_id }}"
 
 - name: Enable systemd unit pcscd
   become: true

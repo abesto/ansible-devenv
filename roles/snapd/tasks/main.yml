@@ -1,7 +1,6 @@
 - name: Install snapd
   aur:
     name: snapd
-    user: "{{ ansible_user_id }}"
 
 - name: Create /snap symlink for old-style snaps
   become: true

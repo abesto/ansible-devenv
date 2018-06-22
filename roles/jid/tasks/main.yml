@@ -1,4 +1,3 @@
 - name: Install jid interactive JSON digger
   aur:
     name: jid-bin
-    user: "{{ ansible_user_id }}"

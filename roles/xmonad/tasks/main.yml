@@ -18,7 +18,6 @@
 - name: Install Yegonesh
   aur:
     name: yegonesh
-    user: "{{ ansible_user_id }}"
 
 - file:
     path: ~/.config/xmobar

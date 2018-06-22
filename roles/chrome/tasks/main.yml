@@ -1,4 +1,3 @@
 - name: Install Google Chrome
   aur:
     name: google-chrome
-    user: "{{ ansible_user_id }}"

@@ -3,8 +3,8 @@ set -euo pipefail
 set -x
 email="$1"; shift
 
-echo 'Initializing git submodules for third-party libraries'
-git submodule init
+echo 'Initializing AUR Ansible module'
+git clone https://github.com/kewlfft/ansible-aur.git ~/.ansible/plugins/modules/aur
 
 echo 'Upgrading system packages, installing bootstrap packages...'
 sudo -S pacman -Syu

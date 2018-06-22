@@ -1,7 +1,6 @@
 - name: Install Oracle JDK 8
   aur:
     name: jdk8
-    user: "{{ ansible_user_id }}"
 
 - name: Install Java, Gradle, and Maven
   become: true

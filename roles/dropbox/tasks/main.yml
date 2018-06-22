@@ -1,7 +1,6 @@
 - name: Install Dropbox and friends
   aur:
     name: "{{ item }}"
-    user: "{{ ansible_user_id }}"
   with_items:
     - dropbox
     - dropbox-cli
