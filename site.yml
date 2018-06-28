@@ -57,6 +57,7 @@
     - keybase
     - lastpass
     - borgbackup
+    - taskwarrior
 
 - hosts: home_desktop
   roles:

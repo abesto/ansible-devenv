@@ -9,8 +9,8 @@ else
     email_file="$site"
 fi
 
-#if ! lpass status; then
-    #lpass login "$(cat "$email_file.email")"
-#fi
+if ! lpass status; then
+    lpass login "$(cat "$email_file.email")"
+fi
 
 ansible-playbook -i inventory --limit="$site" --ask-become-pass -v "site.yml" "$@"

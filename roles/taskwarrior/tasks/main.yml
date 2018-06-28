@@ -1,0 +1,32 @@
+- name: Install taskwarrior
+  become: true
+  package:
+    name: task
+
+- name: Install taskopen from AUR
+  aur:
+    name: taskopen
+
+- name: Symlink .taskrc config from dotfiles
+  include: roles/dotfiles/tasks/symlink.yml src=.taskrc
+
+- name: Symlink .taskopenrc config from dotfiles
+  include: roles/dotfiles/tasks/symlink.yml src=.taskopenrc
+
+- name: Generate credentials files
+  block:
+    - copy:
+        content: "{{ lookup('lastpass', 'taskwarrior/certificate', field='notes') }}"
+        dest: ~/.task/private.certificate.pem
+        mode: 0600
+    - copy:
+        content: "{{ lookup('lastpass', 'taskwarrior/key', field='notes') }}"
+        dest: ~/.task/private.key.pem
+        mode: 0600
+    - copy:
+        content: "{{ lookup('lastpass', 'taskwarrior/ca', field='notes') }}"
+        dest: ~/.task/ca.cert.pem
+        mode: 0600
+    - template:
+        dest: ~/.taskrc.secret
+        src: taskrc.secret
