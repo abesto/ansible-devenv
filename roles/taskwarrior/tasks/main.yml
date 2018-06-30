@@ -29,4 +29,4 @@
         mode: 0600
     - template:
         dest: ~/.taskrc.secret
-        src: taskrc.secret
+        src: roles/taskwarrior/templates/taskrc.secret
