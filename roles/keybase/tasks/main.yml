@@ -1,4 +1,3 @@
 - name: Install keybase
-  become: true
-  pacman:
-    name: keybase
+  aur:
+    name: keybase-bin
