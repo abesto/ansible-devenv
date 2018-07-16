@@ -2,3 +2,8 @@
   become: true
   pacman:
     name: borg
+
+- name: Install python-llfuse for "borg mount"
+  become: true
+  pacman:
+    name: python-llfuse
