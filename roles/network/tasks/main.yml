@@ -5,9 +5,15 @@
   with_items:
     - wicd
     - wicd-gtk
+    # For notifications
+    - notification-daemon
+    - python2-notify
 
 - name: Enable wicd in SystemD
   become: true
   systemd:
     enabled: true
     name: wicd
+
+- name: Start wicd-client from xprofile
+  include: roles/xprofile/tasks/xprofile.yml name=wicd-client priority=20 src=wicd-client
