@@ -1,1 +1,1 @@
-wicd-client --tray
+wicd-client --tray &
