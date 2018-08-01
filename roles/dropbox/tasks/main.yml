@@ -1,9 +1,0 @@
-- name: Install Dropbox and friends
-  aur:
-    name: "{{ item }}"
-  with_items:
-    - dropbox
-    - dropbox-cli
-
-- name: Auto-start Dropbox from .xprofile.d
-  include: roles/xprofile/tasks/xprofile.yml name=dropbox src=dropbox priority=30
