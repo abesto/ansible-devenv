@@ -47,7 +47,7 @@ echo VBoxClient-all > ~/.xprofile.d/99-vbox-guest
 
 ## System upgrade
 
-Pacman and AUR packages are _not_ upgraded by `ansible` runs. Packages are build by `ansible` in `~/aur`, but are upgraded with `bauerbill`.
+Pacman and AUR packages are _not_ upgraded by `ansible` runs. Packages are built by `ansible` in `~/aur` before installation of `yay`, and then through `yay`.
 
 ```
 sudo bb-wrapper -Syu --aur
