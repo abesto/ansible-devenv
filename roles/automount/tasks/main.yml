@@ -1,0 +1,10 @@
+- name: Install udiskie for automounting USB devices
+  package:
+    name: udiskie
+
+- name: Start udiskie from xprofile
+  include: roles/xprofile/tasks/xprofile.yml
+  vars:
+    name: udiskie
+    priority: 20
+    command: udiskie --tray &

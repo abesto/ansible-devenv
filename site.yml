@@ -11,6 +11,7 @@
     - monitoring
     - audio
     - network
+    - automount
     - ufw
     - aspell
     - snapd
