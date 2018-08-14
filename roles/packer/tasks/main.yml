@@ -1,4 +1,4 @@
 - name: Install packer
   become: true
   pacman:
-    name: packer-io
+    name: packer

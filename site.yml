@@ -49,11 +49,9 @@
     - packer
     - jid
     # User apps
-    - chrome
     - firefox
     - spotify
     - wavebox
-    - gitter
     - yubico
     - keybase
     - lastpass
