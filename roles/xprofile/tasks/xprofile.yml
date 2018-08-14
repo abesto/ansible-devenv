@@ -1,4 +1,4 @@
-- name: Register {{ name }} as .xprofile.d script with priority {{ priority }}
+- name: Create .xprofile.d script for {{ name }} with priority {{ priority }}
   copy:
-    src: "{{ src }}"
+    content: "{{ command }}\n"
     dest: ~/.xprofile.d/{{ priority }}-{{name}}

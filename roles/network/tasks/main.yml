@@ -16,4 +16,8 @@
     name: wicd
 
 - name: Start wicd-client from xprofile
-  include: roles/xprofile/tasks/xprofile.yml name=wicd-client priority=20 src=wicd-client
+  include: roles/xprofile/tasks/xprofile.yml
+  vars:
+    name: wicd-client
+    priority: 20
+    command: wicd-client --tray &

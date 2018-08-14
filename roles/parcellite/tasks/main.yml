@@ -4,7 +4,11 @@
     package: parcellite
 
 - name: Start Parcellite from xprofile
-  include: roles/xprofile/tasks/xprofile.yml name=parcellite priority=20 src=parcellite
+  include: roles/xprofile/tasks/xprofile.yml
+  vars:
+    name: parcellite
+    priority: 20
+    command: parcellite &
 
 - name: Symlink Parcellite config from dotfiles
   include: roles/dotfiles/tasks/symlink.yml src=.config/parcellite

@@ -1,44 +1,14 @@
-- name: Install dunst build dependencies
+- name: Install dunst
   become: true
-  pacman:
-    package: "{{ item }}"
-  with_items:
-    - libx11
-    - libxext
-    - libxft
-    - libxss
-    - glib2
-    - pango
-    - gtk2
-    - libxdg-basedir
-
-- name: Check if dunst is at {{ dunst.version }}
-  shell: dunst --version | grep {{ dunst.version }}
-  ignore_errors: true
-  register: dunst_installed
-
-- when: dunst_installed.rc != 0
-  block:
-    - name: Check out dunst at {{ dunst.version }}
-      git:
-        dest: ~/dunst
-        repo: git@github.com:dunst-project/dunst.git
-        refspec: "{{ dunst.version }}"
-      register: dunst_git
-
-    - name: Compile dunst at {{ dunst.version }}
-      shell: make clean all
-      args:
-        chdir: ~/dunst
-
-    - name: Install dunst at {{ dunst.version }}
-      become: true
-      shell: PREFIX=/usr make install
-      args:
-        chdir: "{{ ansible_env.HOME }}/dunst"
+  package:
+    name: dunst
 
 - name: Start dunst in xprofile
-  include: roles/xprofile/tasks/xprofile.yml name=dunst src=dunst priority=20
+  include: roles/xprofile/tasks/xprofile.yml
+  vars:
+    name: dunst
+    priority: 20
+    command: dunst &
 
 - name: Symlink dunstrc
   include: roles/dotfiles/tasks/symlink.yml src=.config/dunst_{{ ansible_local.display_resolution.name }} dest=~/.config/dunst
