@@ -1,3 +1,14 @@
 - name: Install keybase
   aur:
     name: keybase-bin
+
+- name: Start Keybase on login
+  systemd:
+    name: "{{ item }}"
+    enabled: true
+    state: started
+    user: true
+  with_items:
+    - keybase
+    - kbfs
+    # _not_ keybase.gui, can start that on demand as needed
