@@ -1,4 +1,5 @@
 - name: Install udiskie for automounting USB devices
+  become: true
   package:
     name: udiskie
 

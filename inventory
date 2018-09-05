@@ -1,2 +1,3 @@
 home_desktop	ansible_connection=local  site=home_desktop
+hp_pavilion_g6	ansible_connection=local site=hp_pavilion_g6
 single_role   ansible_connection=local

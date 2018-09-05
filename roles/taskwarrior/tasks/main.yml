@@ -13,6 +13,11 @@
 - name: Symlink .taskopenrc config from dotfiles
   include: roles/dotfiles/tasks/symlink.yml src=.taskopenrc
 
+- name: Create directory ~/.task
+  file:
+      path: ~/.task
+      state: directory
+
 - name: Generate credentials files
   block:
     - copy:

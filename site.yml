@@ -1,4 +1,6 @@
-- hosts: home_desktop
+- hosts:
+    - home_desktop
+    - hp_pavilion_g6
   gather_subset:
     - "!all"
   roles:
