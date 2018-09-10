@@ -20,6 +20,7 @@
     - rvm
     - omf/theme-bobthefish
     - pyenv
+    - pipenv
 
 - name: Install fish customizations
   include: tasks/fisher_package.yml name=abesto src=~/dotfiles/fish-abesto
