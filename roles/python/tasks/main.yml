@@ -1,9 +1,10 @@
-- name: Install pyenv and pyenv-virtualenv
+- name: Install python env management tools
   aur:
     name: "{{ item }}"
   with_items:
     - pyenv
     - pyenv-virtualenv
+    - python-pipenv
 
 - name: Install dependencies for building Pythons via pyenv
   become: true
