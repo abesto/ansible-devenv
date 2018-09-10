@@ -1,0 +1,3 @@
+- name: Install trash-cli
+  become: true
+  package: trash-cli
