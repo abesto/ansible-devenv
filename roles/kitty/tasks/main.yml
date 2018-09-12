@@ -1,0 +1,7 @@
+- name: Instal kitty terminal emulator
+  become: true
+  aur:
+    name: kitty
+
+- name: symlink kitty config
+  include: roles/dotfiles/tasks/symlink.yml src=.config/kitty

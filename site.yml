@@ -28,6 +28,7 @@
     - fonts
     - lightdm
     - urxvt
+    - kitty
     - dunst
     - xcompose
     - parcellite
