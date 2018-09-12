@@ -6,3 +6,6 @@
 - name: Install yay AUR helper
   aur:
     name: yay
+
+- name: Symlink yay config from dotfiles
+  include: roles/dotfiles/tasks/symlink.yml src=.config/yay force=true
